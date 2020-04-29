@@ -6,6 +6,8 @@
 #ifndef action_h
 #define action_h
 
+CFStringRef KeyCodeToString(CGKeyCode key_code);
+
 typedef enum E_ACTION_TYPE : NSUInteger {
     E_NONE,
     E_KEYBOARD

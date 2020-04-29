@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6139DF082458FF7500A1CC15 /* test-IntpuActionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */; };
+		6139DF0B2458FFD800A1CC15 /* action-keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139DF0A2458FFD800A1CC15 /* action-keyboard.m */; };
+		6139DF0E2459055D00A1CC15 /* InputExcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C232453CB750096A5D7 /* InputExcUITests.swift */; };
 		61939C032453CB710096A5D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C022453CB710096A5D7 /* AppDelegate.swift */; };
 		61939C052453CB710096A5D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C042453CB710096A5D7 /* ContentView.swift */; };
 		61939C072453CB750096A5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61939C062453CB750096A5D7 /* Assets.xcassets */; };
 		61939C0A2453CB750096A5D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61939C092453CB750096A5D7 /* Preview Assets.xcassets */; };
 		61939C0D2453CB750096A5D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61939C0B2453CB750096A5D7 /* Main.storyboard */; };
 		61939C192453CB750096A5D7 /* InputExcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C182453CB750096A5D7 /* InputExcTests.swift */; };
-		61939C242453CB750096A5D7 /* InputExcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C232453CB750096A5D7 /* InputExcUITests.swift */; };
 		61939C352453CF5F0096A5D7 /* input_device.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C342453CF5F0096A5D7 /* input_device.m */; };
 		61939C3B2453E13A0096A5D7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */; };
 		61939C3D2453E1400096A5D7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3C2453E1400096A5D7 /* IOKit.framework */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "test-IntpuActionKeyboard.m"; sourceTree = "<group>"; };
+		6139DF0A2458FFD800A1CC15 /* action-keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "action-keyboard.m"; sourceTree = "<group>"; };
 		61939BFF2453CB710096A5D7 /* InputExc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61939C022453CB710096A5D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61939C042453CB710096A5D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		61939C012453CB710096A5D7 /* InputExc */ = {
 			isa = PBXGroup;
 			children = (
+				61939C332453CF5F0096A5D7 /* InputExc-Bridging-Header.h */,
 				61E395582458D9A10057AE4B /* Resources */,
 				61E3955B2458E5260057AE4B /* Input */,
 				61939C022453CB710096A5D7 /* AppDelegate.swift */,
@@ -132,7 +137,6 @@
 				61939C082453CB750096A5D7 /* Preview Content */,
 				61FB978A2454D61A00AF4A27 /* json_configure.swift */,
 				61FB979224578B1700AF4A27 /* json_schema.swift */,
-				61939C332453CF5F0096A5D7 /* InputExc-Bridging-Header.h */,
 			);
 			path = InputExc;
 			sourceTree = "<group>";
@@ -150,6 +154,7 @@
 			children = (
 				61939C182453CB750096A5D7 /* InputExcTests.swift */,
 				61939C1A2453CB750096A5D7 /* Info.plist */,
+				6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */,
 			);
 			path = InputExcTests;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			children = (
 				61939C42245448700096A5D7 /* action.m */,
 				61939C45245448E70096A5D7 /* action.h */,
+				6139DF0A2458FFD800A1CC15 /* action-keyboard.m */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -273,6 +279,7 @@
 					};
 					61939C132453CB750096A5D7 = {
 						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1140;
 						TestTargetID = 61939BFE2453CB710096A5D7;
 					};
 					61939C1E2453CB750096A5D7 = {
@@ -334,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6139DF0B2458FFD800A1CC15 /* action-keyboard.m in Sources */,
 				61939C352453CF5F0096A5D7 /* input_device.m in Sources */,
 				61939C43245448700096A5D7 /* action.m in Sources */,
 				61939C402453E4630096A5D7 /* input_source.m in Sources */,
@@ -349,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61939C192453CB750096A5D7 /* InputExcTests.swift in Sources */,
+				6139DF082458FF7500A1CC15 /* test-IntpuActionKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61939C242453CB750096A5D7 /* InputExcUITests.swift in Sources */,
+				6139DF0E2459055D00A1CC15 /* InputExcUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +561,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = InputExcTests/Info.plist;
@@ -563,6 +573,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mizunagi-works.InputExcTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InputExc.app/Contents/MacOS/InputExc";
 			};
@@ -573,6 +584,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = InputExcTests/Info.plist;
