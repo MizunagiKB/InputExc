@@ -198,10 +198,10 @@
 		61E3955B2458E5260057AE4B /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				61939C3F2453E4630096A5D7 /* input_source.m */,
 				61939C412453E4830096A5D7 /* input_source.h */,
-				61939C342453CF5F0096A5D7 /* input_device.m */,
+				61939C3F2453E4630096A5D7 /* input_source.m */,
 				61939C362453CF740096A5D7 /* input_device.h */,
+				61939C342453CF5F0096A5D7 /* input_device.m */,
 				61939C44245448A60096A5D7 /* Action */,
 			);
 			path = Input;

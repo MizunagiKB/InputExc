@@ -6,6 +6,7 @@
 #ifndef input_device_h
 #define input_device_h
 
+
 @interface
 InputDevice: NSObject {
     IOHIDManagerRef ref_manager;
@@ -25,5 +26,6 @@ InputDevice: NSObject {
 - (void) epi_proc;
 - (void) set_enable:(BOOL)b_enable;
 @end
+
 
 #endif /* input_device_h */

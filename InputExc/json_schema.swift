@@ -26,6 +26,8 @@ class IExcPage: Codable {
 
 
 class IExcDevice: Codable {
+    var vendor: Int32 = 0
+    var product: Int32 = 0
     var name: String = ""
     var pages: Array<IExcPage> = []
 }

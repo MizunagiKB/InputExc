@@ -2,6 +2,8 @@
     "devices": [
         {
             "name": "TABMATE",
+            "vendor": 2652,
+            "product": 34050,
             "pages": [
                 {
                     "id": 1,

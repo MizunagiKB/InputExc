@@ -47,12 +47,11 @@ static void create_mutable_dict(CFMutableArrayRef ary_match, UInt32 page, UInt32
 void input_callback(void* ctx, IOReturn inResult, void* inSender, IOHIDValueRef value)
 {
     InputDevice* self = (__bridge InputDevice *)ctx;
-    //OCBridge* self_oc_bridge = self -> ref_oc_bridge;
 
     if(self -> b_enable) {
 
         IOHIDElementRef element = IOHIDValueGetElement(value);
-
+        
         SInt32 type = IOHIDElementGetType(element);
         SInt32 page = IOHIDElementGetUsagePage(element);
         SInt32 usage = IOHIDElementGetUsage(element);
@@ -84,9 +83,23 @@ void evt_device_attach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
     if(self -> ref_device == nil)
     {
         OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
+        SInt32 v;
+        SInt32 p;
 
         [self_oc_bridge device_name_setWithName:@"Connected"];
 
+        CFNumberRef ref_vend = IOHIDDeviceGetProperty(
+                               device,
+                               CFSTR(kIOHIDVendorIDKey)
+                               );
+        if (ref_vend) CFNumberGetValue(ref_vend, kCFNumberSInt32Type, &v);
+
+        CFNumberRef ref_prod = IOHIDDeviceGetProperty(
+                               device,
+                               CFSTR(kIOHIDProductIDKey)
+                               );
+        if (ref_prod) CFNumberGetValue(ref_prod, kCFNumberSInt32Type, &p);
+        
         IOHIDDeviceRegisterInputValueCallback(
                                               device,
                                               input_callback,
