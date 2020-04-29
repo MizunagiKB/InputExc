@@ -83,8 +83,8 @@ void evt_device_attach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
     if(self -> ref_device == nil)
     {
         OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
-        SInt32 v;
-        SInt32 p;
+        SInt32 v = 0;
+        SInt32 p = 0;
         
         CFNumberRef ref_vend = IOHIDDeviceGetProperty(
                                device,
@@ -115,26 +115,29 @@ void evt_device_attach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
                   );
 
             free(name);
-        }
-        
-        if([self_oc_bridge device_compateWithProduct:CFBridgingRelease(ref_name)])
-        {
-            IOHIDDeviceRegisterInputValueCallback(
-                                                  device,
-                                                  input_callback,
-                                                  (__bridge void * _Nullable)(self)
-                                                  );
 
-            IOHIDDeviceScheduleWithRunLoop(device, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-            IOReturn io_result = IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
+            [self_oc_bridge update_device_infoWithVendor_id:v product_id:p vendor:CFBridgingRelease(ref_name)];
 
-            if(io_result == 0)
+            if([self_oc_bridge device_compareWithProduct:CFBridgingRelease(ref_name)])
             {
-                [self_oc_bridge device_name_setWithName:@"Connected"];
-                self -> ref_device = device;
+                IOHIDDeviceRegisterInputValueCallback(
+                                                      device,
+                                                      input_callback,
+                                                      (__bridge void * _Nullable)(self)
+                                                      );
 
-            } else {
-                [self_oc_bridge device_name_setWithName:@"IOHIDDeviceOpen error"];
+                IOHIDDeviceScheduleWithRunLoop(device, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+                IOReturn io_result = IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
+
+                if(io_result == 0)
+                {
+                    [self_oc_bridge update_connection_statusWithConnection_status:@"Connected"];
+                    self -> ref_device = device;
+
+                } else {
+                    [self_oc_bridge update_connection_statusWithConnection_status:@"IOHIDDeviceOpen error"];
+                }
+
             }
         }
     }
@@ -150,7 +153,8 @@ void evt_device_detach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
     {
         OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
 
-        [self_oc_bridge device_name_setWithName:@"Disconnected"];
+        [self_oc_bridge update_connection_statusWithConnection_status:@"Disconnected"];
+        [self_oc_bridge update_device_infoWithVendor_id:0 product_id:0 vendor:@""];
 
         IOHIDDeviceClose(self -> ref_device, kIOHIDOptionsTypeNone);
         self -> ref_device = nil;
@@ -205,7 +209,7 @@ void evt_device_detach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
     if(io_result != 0)
     {
         OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
-        [self_oc_bridge device_name_setWithName:@"IOHIDManagerOpen error"];
+        [self_oc_bridge update_connection_statusWithConnection_status:@"IOHIDManagerOpen error"];
     }
 }
 
