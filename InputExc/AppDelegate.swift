@@ -11,6 +11,9 @@ import SwiftUI
 // ------------------------------------------------------------------ class(s)
 class UIObserve: ObservableObject {
     @Published var connection_status: String = "Disconnected"
+    @Published var vendor_id: Int32 = 0
+    @Published var product_id: Int32 = 0
+    @Published var product: String = ""
     @Published var iexc_settings: IExcSettings!
 }
 
@@ -20,10 +23,20 @@ class UIObserve: ObservableObject {
     var env: UIObserve!
     var input_device: InputDevice!
 
-    @objc func device_name_set(name: String) {
-        env.connection_status = name
+    @objc func update_device_info(
+        vendor_id: Int32, product_id: Int32,
+        vendor: String) {
+
+        env.vendor_id = vendor_id
+        env.product_id = product_id
+        env.product = vendor
     }
-    
+
+    @objc func update_connection_status(connection_status: String)
+    {
+        env.connection_status = connection_status
+    }
+
     @objc func save_settings() {
         JsonConfigure().save(iexc_settings: env.iexc_settings)
     }
@@ -56,13 +69,14 @@ class UIObserve: ObservableObject {
         input_device.input_source = input_source
     }
 
-    @objc func device_compate(product: String) -> Bool {
+    @objc func device_compare(product: String) -> Bool {
 
-        return self.env.iexc_settings.devices[0].name == product
-    }
-
-    @objc func test() {
-        print("adamo")
+        if self.env.iexc_settings.devices[0].name == product {
+            env.connection_status = "Connected"
+            return true
+        }
+        
+        return false
     }
 }
 

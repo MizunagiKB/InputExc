@@ -20,6 +20,16 @@ struct ContentView: View {
         VStack {
 
             Text(self.env.connection_status)
+            
+            HStack {
+                Text("VendorID")
+                Text("\(String(format: "%04X", self.env.vendor_id))")
+                Text("ProductID")
+                Text("\(String(format: "%04X", self.env.product_id))")
+                Text("Product")
+                Text(self.env.product)
+            }
+                .padding(1)
 
             Divider()
 
@@ -36,6 +46,7 @@ struct ContentView: View {
                                 Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].command)
                                 TextField("-", text: self.$env.iexc_settings.devices[0].pages[0].buttons[i].character)
                                     .frame(width: 64.0)
+                                    .multilineTextAlignment(TextAlignment.center)
                             }.padding(1)
                         }
                     }
@@ -128,25 +139,35 @@ struct ContentView: View {
                     {
                         let app = NSApplication.shared.delegate as! AppDelegate
 
-                        if(self.enable_status)
+                        if(self.enable_status == false)
                         {
-                            self.enable_status = false
-                            self.lbl_enable_status = "Inactive"
-                        } else {
                             self.enable_status = true
-                            self.lbl_enable_status = "Active"
                         }
 
                         app.evt_active(enable: self.enable_status)
                     }
-                ) {
-                    Text(self.lbl_enable_status)
-                }
+                ) { Text("Active") }
+                    .disabled(self.enable_status ? true : false)
+                
+                Button(
+                    action:
+                    {
+                        let app = NSApplication.shared.delegate as! AppDelegate
+
+                        if(self.enable_status)
+                        {
+                            self.enable_status = false
+                        }
+
+                        app.evt_active(enable: self.enable_status)
+                    }
+                ) { Text("Inactive") }
+                    .disabled(self.enable_status ? false : true)
             }
 
         }
         .padding()
-        .frame(width: 540.0, height: 640.0)
+        .frame(width: 540.0, height: 680.0)
     }
 }
 
