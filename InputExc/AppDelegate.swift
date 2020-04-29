@@ -56,6 +56,11 @@ class UIObserve: ObservableObject {
         input_device.input_source = input_source
     }
 
+    @objc func device_compate(product: String) -> Bool {
+
+        return self.env.iexc_settings.devices[0].name == product
+    }
+
     @objc func test() {
         print("adamo")
     }

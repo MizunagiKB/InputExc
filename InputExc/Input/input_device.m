@@ -85,36 +85,58 @@ void evt_device_attach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
         OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
         SInt32 v;
         SInt32 p;
-
-        [self_oc_bridge device_name_setWithName:@"Connected"];
-
+        
         CFNumberRef ref_vend = IOHIDDeviceGetProperty(
                                device,
                                CFSTR(kIOHIDVendorIDKey)
                                );
-        if (ref_vend) CFNumberGetValue(ref_vend, kCFNumberSInt32Type, &v);
+        if(ref_vend) CFNumberGetValue(ref_vend, kCFNumberSInt32Type, &v);
 
         CFNumberRef ref_prod = IOHIDDeviceGetProperty(
                                device,
                                CFSTR(kIOHIDProductIDKey)
                                );
-        if (ref_prod) CFNumberGetValue(ref_prod, kCFNumberSInt32Type, &p);
-        
-        IOHIDDeviceRegisterInputValueCallback(
-                                              device,
-                                              input_callback,
-                                              (__bridge void * _Nullable)(self)
-                                              );
+        if(ref_prod) CFNumberGetValue(ref_prod, kCFNumberSInt32Type, &p);
 
-        IOHIDDeviceScheduleWithRunLoop(device, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-        IOReturn io_result = IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
-
-        if(io_result != 0)
+        CFStringRef ref_name = IOHIDDeviceGetProperty(
+                               device,
+                               CFSTR(kIOHIDProductKey)
+                               );
+        if(ref_name)
         {
-            [self_oc_bridge device_name_setWithName:@"IOHIDDeviceOpen error"];
-        }
+            CFIndex len = CFStringGetLength(ref_name);
+            CFIndex maxSize = CFStringGetMaximumSizeForEncoding(len, kCFStringEncodingUTF8);
+            char* name = malloc(maxSize + 1);
 
-        self -> ref_device = device;
+            CFStringGetCString(ref_name, name, maxSize, kCFStringEncodingUTF8);
+
+            NSLog(@"VendorID[%04X] : ProductID[%04X] : %s", v, p,
+                  name
+                  );
+
+            free(name);
+        }
+        
+        if([self_oc_bridge device_compateWithProduct:CFBridgingRelease(ref_name)])
+        {
+            IOHIDDeviceRegisterInputValueCallback(
+                                                  device,
+                                                  input_callback,
+                                                  (__bridge void * _Nullable)(self)
+                                                  );
+
+            IOHIDDeviceScheduleWithRunLoop(device, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+            IOReturn io_result = IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
+
+            if(io_result == 0)
+            {
+                [self_oc_bridge device_name_setWithName:@"Connected"];
+                self -> ref_device = device;
+
+            } else {
+                [self_oc_bridge device_name_setWithName:@"IOHIDDeviceOpen error"];
+            }
+        }
     }
 }
 
