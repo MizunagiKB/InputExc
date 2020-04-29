@@ -22,12 +22,9 @@ struct ContentView: View {
             Text(self.env.connection_status)
             
             HStack {
-                Text("VendorID")
-                Text("\(String(format: "%04X", self.env.vendor_id))")
-                Text("ProductID")
-                Text("\(String(format: "%04X", self.env.product_id))")
-                Text("Product")
-                Text(self.env.product)
+                Text("VendorID: \(String(format: "%04X", self.env.vendor_id))")
+                Text("ProductID: \(String(format: "%04X", self.env.product_id))")
+                Text("Product: " + self.env.product)
             }
                 .padding(1)
 

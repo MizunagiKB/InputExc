@@ -20,13 +20,14 @@ class JsonConfigure: NSObject {
     func create_dir() {
 
         let m = FileManager.default
-        let target_dir = NSHomeDirectory() + self.configure_dir
+        let target_dir: URL = m.homeDirectoryForCurrentUser
+            .appendingPathComponent(self.configure_dir)
 
-        if m.fileExists(atPath: target_dir) == false {
+        if m.fileExists(atPath: target_dir.path) == false {
             do {
-                try m.createDirectory(atPath: target_dir, withIntermediateDirectories: true, attributes: nil)
+                try m.createDirectory(at: target_dir, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                NSLog("Failure configure dir %s", target_dir)
+                NSLog("Failure configure dir %s", target_dir.path)
             }
         }
     }

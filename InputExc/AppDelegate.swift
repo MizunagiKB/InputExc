@@ -125,8 +125,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the window and set the content view. 
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
             backing: .buffered, defer: false)
+        window.title = "InputExc"
         window.center()
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: content_view)
@@ -147,11 +148,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         oc_bridge.input_device.epi_proc()
     }
 
-    
+
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
+
     
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+
+        if flag == false {
+            for w in sender.windows {
+                w.makeKeyAndOrderFront(self)
+            }
+        }
+
+        return true
+    }
+
     
     func evt_save_settings() {
         oc_bridge.save_settings()
@@ -169,5 +182,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         oc_bridge.input_device.set_enable(enable)
     }
 
+    
+    @IBAction func evt_menu_about(_ sender: Any) {
+    }
+
+    
+    @IBAction func evt_menu_preference(_ sender: Any) {
+
+        for w in NSApplication.shared.windows {
+            w.makeKeyAndOrderFront(self)
+        }
+    }
 }
 

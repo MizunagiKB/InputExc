@@ -48,7 +48,9 @@ void input_callback(void* ctx, IOReturn inResult, void* inSender, IOHIDValueRef 
 {
     InputDevice* self = (__bridge InputDevice *)ctx;
 
-    if(self -> b_enable) {
+    if(self -> b_enable)
+    {
+        OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
 
         IOHIDElementRef element = IOHIDValueGetElement(value);
         
@@ -215,6 +217,7 @@ void evt_device_detach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
 
 
 - (void) epi_proc {
+    IOHIDManagerClose(ref_manager, kIOHIDOptionsTypeNone);
 }
 
 
