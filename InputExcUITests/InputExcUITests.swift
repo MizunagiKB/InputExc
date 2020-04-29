@@ -19,7 +19,7 @@ class InputExcUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    #if false
     func testExample() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
@@ -37,4 +37,5 @@ class InputExcUITests: XCTestCase {
             }
         }
     }
+    #endif
 }
