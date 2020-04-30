@@ -136,10 +136,38 @@ CGKeyCode StringToKeyCode(NSString* s)
 }
 
 
-CFMutableDictionaryRef create_kblayout()
+const UInt8* get_keyboard_layout()
+{
+    TISInputSourceRef source_curr;
+    CFDataRef layout;
+
+    source_curr = TISCopyCurrentKeyboardInputSource();
+    layout = TISGetInputSourceProperty(
+                                       source_curr,
+                                       kTISPropertyUnicodeKeyLayoutData
+                                       );
+    if(layout == nil)
+    {
+        source_curr = TISCopyCurrentKeyboardLayoutInputSource();
+        layout = TISGetInputSourceProperty(
+                                           source_curr,
+                                           kTISPropertyUnicodeKeyLayoutData
+                                           );
+        if(layout == nil)
+        {
+            return nil;
+        }
+    }
+    
+    return CFDataGetBytePtr(layout);
+}
+
+
+CFMutableDictionaryRef create_kb_table()
 {
     CFMutableDictionaryRef dict_result = NULL;
     UInt32 i;
+    UCKeyboardLayout* kb_layout;
 
     dict_result = CFDictionaryCreateMutable(
                                             kCFAllocatorDefault,
@@ -148,19 +176,37 @@ CFMutableDictionaryRef create_kblayout()
                                             &kCFTypeDictionaryValueCallBacks
                                             );
 
-    if(dict_result == NULL) return UINT16_MAX;
+    kb_layout = (UCKeyboardLayout *)get_keyboard_layout();
 
     for(i = 0; i < 128; i++)
     {
-        CFStringRef string = CFStringCreateWithKeyCode((CGKeyCode)i);
-        if(string != NULL)
-        {
-            CFNumberRef ref_code = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &i);
+        UInt32 keysDown = 0;
+        UniChar c[4];
+        UniCharCount realLength;
 
-            CFDictionarySetValue(dict_result, string, ref_code);
+        UCKeyTranslate(
+                       kb_layout,
+                       i,
+                       kUCKeyActionDisplay,
+                       0,
+                       LMGetKbdType(),
+                       kUCKeyTranslateNoDeadKeysBit,
+                       &keysDown,
+                       sizeof(c) / sizeof(c[0]),
+                       &realLength,
+                       c
+                       );
+
+        CFStringRef s = CFStringCreateWithCharacters(kCFAllocatorDefault, c, 1);
+
+        if(s != NULL)
+        {
+            const CFNumberRef ref_code = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &i);
+
+            CFDictionarySetValue(dict_result, s, ref_code);
 
             CFRelease(ref_code);
-            CFRelease(string);
+            CFRelease(s);
         }
     }
 

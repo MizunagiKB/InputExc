@@ -192,6 +192,7 @@ void evt_device_detach(void* ctx, IOReturn inResult, void* inSender, IOHIDDevice
     {
         ary_ref_device = CFArrayCreateMutable(kCFAllocatorDefault, 0, &kCFTypeArrayCallBacks);
         dict_event_guard = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        dict_kb_table = create_kb_table();
 
         ref_oc_bridge = nil;
         ref_input_source = nil;
