@@ -6,8 +6,8 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-#import "Action/action.h"
-#import "input_source.h"
+#import "action.h"
+#import "action_list.h"
 
 
 @implementation ActionSequence

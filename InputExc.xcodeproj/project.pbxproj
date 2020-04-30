@@ -10,6 +10,7 @@
 		6139DF082458FF7500A1CC15 /* test-IntpuActionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */; };
 		6139DF0B2458FFD800A1CC15 /* action-keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139DF0A2458FFD800A1CC15 /* action-keyboard.m */; };
 		6139DF0E2459055D00A1CC15 /* InputExcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C232453CB750096A5D7 /* InputExcUITests.swift */; };
+		614E6221245A8D8100B3BFFF /* input_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 614E6220245A8D8100B3BFFF /* input_util.m */; };
 		61939C032453CB710096A5D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C022453CB710096A5D7 /* AppDelegate.swift */; };
 		61939C052453CB710096A5D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C042453CB710096A5D7 /* ContentView.swift */; };
 		61939C072453CB750096A5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61939C062453CB750096A5D7 /* Assets.xcassets */; };
@@ -19,7 +20,7 @@
 		61939C352453CF5F0096A5D7 /* input_device.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C342453CF5F0096A5D7 /* input_device.m */; };
 		61939C3B2453E13A0096A5D7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */; };
 		61939C3D2453E1400096A5D7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3C2453E1400096A5D7 /* IOKit.framework */; };
-		61939C402453E4630096A5D7 /* input_source.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C3F2453E4630096A5D7 /* input_source.m */; };
+		61939C402453E4630096A5D7 /* action_list.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C3F2453E4630096A5D7 /* action_list.m */; };
 		61939C43245448700096A5D7 /* action.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C42245448700096A5D7 /* action.m */; };
 		61E3955A2458D9E00057AE4B /* default-TABMATE.json in Resources */ = {isa = PBXBuildFile; fileRef = 61E395592458D9E00057AE4B /* default-TABMATE.json */; };
 		61FB978B2454D61A00AF4A27 /* json_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB978A2454D61A00AF4A27 /* json_configure.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "test-IntpuActionKeyboard.m"; sourceTree = "<group>"; };
 		6139DF0A2458FFD800A1CC15 /* action-keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "action-keyboard.m"; sourceTree = "<group>"; };
+		614E6220245A8D8100B3BFFF /* input_util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = input_util.m; sourceTree = "<group>"; };
 		61939BFF2453CB710096A5D7 /* InputExc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61939C022453CB710096A5D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61939C042453CB710096A5D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,8 +67,8 @@
 		61939C362453CF740096A5D7 /* input_device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = input_device.h; sourceTree = "<group>"; };
 		61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		61939C3C2453E1400096A5D7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		61939C3F2453E4630096A5D7 /* input_source.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = input_source.m; sourceTree = "<group>"; };
-		61939C412453E4830096A5D7 /* input_source.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = input_source.h; sourceTree = "<group>"; };
+		61939C3F2453E4630096A5D7 /* action_list.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = action_list.m; sourceTree = "<group>"; };
+		61939C412453E4830096A5D7 /* action_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = action_list.h; sourceTree = "<group>"; };
 		61939C42245448700096A5D7 /* action.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = action.m; sourceTree = "<group>"; };
 		61939C45245448E70096A5D7 /* action.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = action.h; sourceTree = "<group>"; };
 		61E395592458D9E00057AE4B /* default-TABMATE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "default-TABMATE.json"; sourceTree = "<group>"; };
@@ -180,8 +182,10 @@
 		61939C44245448A60096A5D7 /* Action */ = {
 			isa = PBXGroup;
 			children = (
-				61939C42245448700096A5D7 /* action.m */,
+				61939C412453E4830096A5D7 /* action_list.h */,
+				61939C3F2453E4630096A5D7 /* action_list.m */,
 				61939C45245448E70096A5D7 /* action.h */,
+				61939C42245448700096A5D7 /* action.m */,
 				6139DF0A2458FFD800A1CC15 /* action-keyboard.m */,
 			);
 			path = Action;
@@ -198,10 +202,9 @@
 		61E3955B2458E5260057AE4B /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				61939C412453E4830096A5D7 /* input_source.h */,
-				61939C3F2453E4630096A5D7 /* input_source.m */,
 				61939C362453CF740096A5D7 /* input_device.h */,
 				61939C342453CF5F0096A5D7 /* input_device.m */,
+				614E6220245A8D8100B3BFFF /* input_util.m */,
 				61939C44245448A60096A5D7 /* Action */,
 			);
 			path = Input;
@@ -341,10 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614E6221245A8D8100B3BFFF /* input_util.m in Sources */,
 				6139DF0B2458FFD800A1CC15 /* action-keyboard.m in Sources */,
 				61939C352453CF5F0096A5D7 /* input_device.m in Sources */,
 				61939C43245448700096A5D7 /* action.m in Sources */,
-				61939C402453E4630096A5D7 /* input_source.m in Sources */,
+				61939C402453E4630096A5D7 /* action_list.m in Sources */,
 				61939C052453CB710096A5D7 /* ContentView.swift in Sources */,
 				61FB978B2454D61A00AF4A27 /* json_configure.swift in Sources */,
 				61939C032453CB710096A5D7 /* AppDelegate.swift in Sources */,

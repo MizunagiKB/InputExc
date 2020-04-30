@@ -10,11 +10,13 @@
 @interface
 InputDevice: NSObject {
     IOHIDManagerRef ref_manager;
-    IOHIDDeviceRef ref_device;
+    CFMutableArrayRef ary_ref_device;
+    CFMutableDictionaryRef dict_event_guard;
     
     NSObject* ref_oc_bridge;
     
     InputSource* ref_input_source;
+    CFMutableDictionaryRef ref_dict_kblayout;
     BOOL b_enable;
 }
 

@@ -6,5 +6,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "Input/Action/action.h"
-#import "input_source.h"
+#import "Input/Action/action_list.h"
+
 #import "input_device.h"

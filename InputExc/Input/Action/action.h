@@ -30,11 +30,13 @@ ActionKeyboard: Action {
 
     NSString* c_character;
 }
+
 @property bool shift;
 @property bool control;
 @property bool alternate;
 @property bool command;
 @property NSString* character;
+
 - (id) init;
 - (void) event_dispatch:(bool)is_keydown;
 @end
