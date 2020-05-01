@@ -52,6 +52,7 @@ class UIObserve: ObservableObject {
                     var ref_sequence: ActionSequence
 
                     act_k = ActionKeyboard()
+                    act_k.input_device = self.input_device
                     act_k.shift = button.shift
                     act_k.control = button.control
                     act_k.alternate = button.alternate
@@ -71,10 +72,17 @@ class UIObserve: ObservableObject {
 
     @objc func device_compare(product: String) -> Bool {
 
+        #if true
         if self.env.iexc_settings.devices[0].name == product {
             env.connection_status = "Connected"
             return true
         }
+        #else
+        if "Joy-Con (L)" == product {
+            env.connection_status = "Connected"
+            return true
+        }
+        #endif
         
         return false
     }
@@ -165,6 +173,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    func evt_check_available_character(s: String) -> Bool {
+        return check_available_character(s)
+    }
+    
     
     func evt_save_settings() {
         oc_bridge.save_settings()

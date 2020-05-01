@@ -12,5 +12,6 @@
 
 
 @implementation Action
+@synthesize input_device = p_input_device;
 - (void) event_dispatch:(bool)is_keydown {}
 @end

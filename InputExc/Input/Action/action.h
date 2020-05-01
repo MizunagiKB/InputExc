@@ -16,7 +16,9 @@ typedef enum E_ACTION_TYPE : NSUInteger {
 
 @interface
 Action: NSObject {
+    NSObject* p_input_device;
 }
+@property NSObject* input_device;
 - (void) event_dispatch:(bool)is_keydown;
 @end
 

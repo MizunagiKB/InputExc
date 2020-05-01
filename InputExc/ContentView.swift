@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var tab_selected = 0
     @State var enable_status = false
     @State var lbl_enable_status = "Inactive"
+    @State var dict_button_status: [Int: Color] = [:]
 
     @EnvironmentObject var env: UIObserve
 
@@ -41,14 +42,28 @@ struct ContentView: View {
                                 Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].control)
                                 Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].alternate)
                                 Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[0].buttons[i].character)
+                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[0].buttons[i].character,
+                                          onEditingChanged: { b_changed in
+                                            if(b_changed) {} else
+                                            {
+                                                let app = NSApplication.shared.delegate as! AppDelegate
+                                                let s = self.env.iexc_settings.devices[0].pages[0].buttons[i].character
+                                                if(app.evt_check_available_character(s: s) == true) {
+                                                    self.dict_button_status[i] = Color.primary
+                                                } else {
+                                                    self.dict_button_status[i] = Color.red
+                                                }
+                                            }
+                                }
+                                )
                                     .frame(width: 64.0)
                                     .multilineTextAlignment(TextAlignment.center)
+                                    .foregroundColor(self.dict_button_status[i])
                             }.padding(1)
                         }
                     }
                 }.tabItem { Text(self.env.iexc_settings.devices[0].pages[0].name)}
-                    .id(self.env.iexc_settings.devices[0].pages[0].id)
+                    .tag(self.env.iexc_settings.devices[0].pages[0].id)
 
                 Form {
                     VStack {
@@ -60,13 +75,28 @@ struct ContentView: View {
                                 Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].control)
                                 Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].alternate)
                                 Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[1].buttons[i].character)
+                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[1].buttons[i].character,
+                                          onEditingChanged: { b_changed in
+                                            if(b_changed) {} else
+                                            {
+                                                let app = NSApplication.shared.delegate as! AppDelegate
+                                                let s = self.env.iexc_settings.devices[0].pages[1].buttons[i].character
+                                                if(app.evt_check_available_character(s: s) == true) {
+                                                    self.dict_button_status[i] = Color.primary
+                                                } else {
+                                                    self.dict_button_status[i] = Color.red
+                                                }
+                                            }
+                                }
+                                )
                                     .frame(width: 64.0)
+                                    .multilineTextAlignment(TextAlignment.center)
+                                    .foregroundColor(self.dict_button_status[i])
                             }.padding(1)
                         }
                     }
                 }.tabItem { Text(self.env.iexc_settings.devices[0].pages[1].name)}
-                    .id(self.env.iexc_settings.devices[0].pages[1].id)
+                    .tag(self.env.iexc_settings.devices[0].pages[1].id)
 
                 Form {
                     VStack {
@@ -78,13 +108,28 @@ struct ContentView: View {
                                 Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].control)
                                 Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].alternate)
                                 Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[2].buttons[i].character)
+                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[2].buttons[i].character,
+                                          onEditingChanged: { b_changed in
+                                            if(b_changed) {} else
+                                            {
+                                                let app = NSApplication.shared.delegate as! AppDelegate
+                                                let s = self.env.iexc_settings.devices[0].pages[2].buttons[i].character
+                                                if(app.evt_check_available_character(s: s) == true) {
+                                                    self.dict_button_status[i] = Color.primary
+                                                } else {
+                                                    self.dict_button_status[i] = Color.red
+                                                }
+                                            }
+                                }
+                                )
                                     .frame(width: 64.0)
+                                    .multilineTextAlignment(TextAlignment.center)
+                                    .foregroundColor(self.dict_button_status[i])
                             }.padding(1)
                         }
                     }
                 }.tabItem { Text(self.env.iexc_settings.devices[0].pages[2].name)}
-                    .id(self.env.iexc_settings.devices[0].pages[2].id)
+                    .tag(self.env.iexc_settings.devices[0].pages[2].id)
 
                 Form {
                     VStack {
@@ -96,13 +141,28 @@ struct ContentView: View {
                                 Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].control)
                                 Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].alternate)
                                 Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[3].buttons[i].character)
+                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[3].buttons[i].character,
+                                          onEditingChanged: { b_changed in
+                                            if(b_changed) {} else
+                                            {
+                                                let app = NSApplication.shared.delegate as! AppDelegate
+                                                let s = self.env.iexc_settings.devices[0].pages[3].buttons[i].character
+                                                if(app.evt_check_available_character(s: s) == true) {
+                                                    self.dict_button_status[i] = Color.primary
+                                                } else {
+                                                    self.dict_button_status[i] = Color.red
+                                                }
+                                            }
+                                }
+                                )
                                     .frame(width: 64.0)
+                                    .multilineTextAlignment(TextAlignment.center)
+                                    .foregroundColor(self.dict_button_status[i])
                             }.padding(1)
                         }
                     }
                 }.tabItem { Text(self.env.iexc_settings.devices[0].pages[3].name)}
-                    .id(self.env.iexc_settings.devices[0].pages[3].id)
+                    .tag(self.env.iexc_settings.devices[0].pages[3].id)
             }
 
             Divider()

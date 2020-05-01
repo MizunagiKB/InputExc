@@ -54,7 +54,7 @@ CFStringRef CFStringCreateWithKeyCode(CGKeyCode key_code)
 }
 
 
-CGKeyCode StringToKeyCode(NSString* s)
+CGKeyCode StringToKeyCode(const NSString* s)
 {
     static CFMutableDictionaryRef charToCodeDict = NULL;
     CFNumberRef ref_n;
@@ -91,6 +91,8 @@ CGKeyCode StringToKeyCode(NSString* s)
     if ([s isEqualToString:@"RIGHT"]) return kVK_RightArrow;
     if ([s isEqualToString:@"DOWN"]) return kVK_DownArrow;
     if ([s isEqualToString:@"UP"]) return kVK_UpArrow;
+
+    if(s.length > 1) return UINT16_MAX;
     
     if(charToCodeDict == NULL)
     {
@@ -135,6 +137,10 @@ CGKeyCode StringToKeyCode(NSString* s)
     return code;
 }
 
+bool check_available_character(const NSString* s)
+{
+    return StringToKeyCode(s) != UINT16_MAX;
+}
 
 const UInt8* get_keyboard_layout()
 {

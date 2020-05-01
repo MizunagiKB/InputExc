@@ -7,6 +7,9 @@
 #define input_device_h
 
 
+bool check_available_character(const NSString* s);
+
+
 @interface
 InputDevice: NSObject {
     IOHIDManagerRef ref_manager;

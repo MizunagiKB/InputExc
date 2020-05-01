@@ -6,7 +6,7 @@
             "product": 34050,
             "pages": [
                 {
-                    "id": 1,
+                    "id": 0,
                     "name": "Red",
                     "buttons": [
                         {"id":  1, "name": "+",             "shift": false, "control": false, "alternate": false, "command": true,  "character": "y" },
@@ -33,7 +33,7 @@
                 },
 
                 {
-                    "id": 2,
+                    "id": 1,
                     "name": "Blue",
                     "buttons": [
                         {"id": 16, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
@@ -60,7 +60,7 @@
                 },
 
                 {
-                    "id": 3,
+                    "id": 2,
                     "name": "Red blink",
                     "buttons": [
                         {"id": 31, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
@@ -87,7 +87,7 @@
                 },
 
                 {
-                    "id": 4,
+                    "id": 3,
                     "name": "Blue blink",
                     "buttons": [
                         {"id": 46, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },

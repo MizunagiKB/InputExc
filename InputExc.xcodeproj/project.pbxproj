@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6127752B245C5E33001C5F90 /* default-JOY-CON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "default-JOY-CON.json"; sourceTree = "<group>"; };
 		6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "test-IntpuActionKeyboard.m"; sourceTree = "<group>"; };
 		6139DF0A2458FFD800A1CC15 /* action-keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "action-keyboard.m"; sourceTree = "<group>"; };
 		614E6220245A8D8100B3BFFF /* input_util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = input_util.m; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				61E395592458D9E00057AE4B /* default-TABMATE.json */,
+				6127752B245C5E33001C5F90 /* default-JOY-CON.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
