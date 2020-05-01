@@ -86,7 +86,7 @@ void input_callback(void* ctx, IOReturn inResult, void* inSender, IOHIDValueRef 
             }
         }
 
-        NSLog(@"type %04x, page %04x, usage %04x, value %d\n", type, page, usage, i_value);
+        NSLog(@"type %04x, page %04x, usage %04x, value %d", type, page, usage, i_value);
     }
 }
 
