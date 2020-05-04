@@ -105,7 +105,7 @@ class AppEnvironment: ObservableObject
 {
     struct Device: Hashable
     {
-        var device: IOHIDDevice!
+        var io_device: IOHIDDevice!
         var b_opened: Bool = false
         var product: String = ""
         var vendor_id: Int32 = 0

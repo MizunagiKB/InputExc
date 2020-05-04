@@ -23,7 +23,7 @@ import CoreGraphics
     {
         for n in 0..<self.env.list_device.count
         {
-            if self.env.list_device[n].device == io_device
+            if self.env.list_device[n].io_device == io_device
             {
                 self.env.list_device[n].b_opened = self.dev.device_open(io_device)
 
@@ -38,7 +38,7 @@ import CoreGraphics
     {
         for n in 0..<self.env.list_device.count
         {
-            if self.env.list_device[n].device == io_device
+            if self.env.list_device[n].io_device == io_device
             {
                 self.env.list_device[n].b_opened = self.dev.device_close(io_device)
 
@@ -110,7 +110,7 @@ import CoreGraphics
 
         for dev in self.env.list_device
         {
-            if dev.device == device
+            if dev.io_device == device
             {
                 b_found = true
                 break
@@ -124,7 +124,7 @@ import CoreGraphics
             if(serial_id != nil)
             {
                 let dev = AppEnvironment.Device(
-                    device: device,
+                    io_device: device,
                     product: IOHIDDeviceGetProperty(device, kIOHIDProductKey as CFString) as! String,
                     vendor_id: IOHIDDeviceGetProperty(device, kIOHIDVendorIDKey as CFString) as! Int32,
                     product_id: IOHIDDeviceGetProperty(device, kIOHIDProductIDKey as CFString) as! Int32,
@@ -148,7 +148,7 @@ import CoreGraphics
             b_remove = false
 
             for dev in self.env.list_device {
-                if dev.device == device {
+                if dev.io_device == device {
                     self.env.list_device.remove(at: pos)
                     
                     if self.env.selected_product == dev.product

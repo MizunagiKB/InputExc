@@ -42,7 +42,7 @@ struct ContentView: View
                         self.env.selected_product = device.product
                         self.env.selected_serial_id = device.serial_id
                         self.env.device_input_status = ""
-                        self.selected_device = device.device
+                        self.selected_device = device.io_device
                         self.device_opened = device.b_opened
                     }) {
                         Text(device.product)

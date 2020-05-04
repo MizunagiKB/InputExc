@@ -32,6 +32,7 @@ const UInt8* get_keyboard_layout()
                                            source_curr,
                                            kTISPropertyUnicodeKeyLayoutData
                                            );
+
         if(layout == nil)
         {
             return nil;
@@ -165,8 +166,8 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 }
 
 
-- (id) init {
-
+- (id) init
+{
     if(self = [super init])
     {
         dict_kb_table = create_kb_table();
@@ -180,10 +181,8 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 }
 
 
-- (void) pro_proc {
-    
-    //assert(ref_input_source != nil);
-
+- (void) pro_proc
+{
     ref_manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
 
     CFMutableArrayRef ary_match = CFArrayCreateMutable(kCFAllocatorDefault, 0, &kCFTypeArrayCallBacks);
@@ -217,7 +216,8 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 }
 
 
-- (void) epi_proc {
+- (void) epi_proc
+{
     IOHIDManagerClose(ref_manager, kIOHIDOptionsTypeNone);
 }
 

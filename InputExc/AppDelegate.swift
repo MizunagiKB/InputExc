@@ -10,12 +10,13 @@ import SwiftUI
 
 // ------------------------------------------------------------------ class(s)
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
+class AppDelegate: NSObject, NSApplicationDelegate
+{
     var bridge: AppBridge!
     var window: NSWindow!
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification)
+    {
         // Create the SwiftUI view that provides the window contents.
 
         bridge = AppBridge()
@@ -43,7 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool
+    {
+        bridge.dev.epi_proc()
         return true
     }
 
@@ -52,10 +55,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
     }
 
+    @IBAction func evt_menu_save(_ sender: Any)
+    {
+        self.bridge.save_settings()
+    }
     
     @IBAction func evt_menu_preference(_ sender: Any)
     {
-        for w in NSApplication.shared.windows {
+        for w in NSApplication.shared.windows
+        {
             w.makeKeyAndOrderFront(self)
         }
     }
