@@ -1,0 +1,112 @@
+{
+    "product": "TABMATE",
+    "vendor_id": 0,
+    "product_id": 0,
+    "serial_id": "",
+
+    "pages": [
+        {
+            "name": "Red",
+            "actions": [
+                {"usage":  1, "name": "+",             "shift": false, "control": false, "alternate": false, "command": true,  "character": "y" },
+                {"usage":  2, "name": "-",             "shift": false, "control": false, "alternate": false, "command": true,  "character": "z" },
+
+                {"usage":  3, "name": "A",             "shift": false, "control": false, "alternate": false, "command": false, "character": "w" },
+                {"usage":  4, "name": "B",             "shift": false, "control": false, "alternate": false, "command": false, "character": "k" },
+                {"usage":  5, "name": "C",             "shift": false, "control": false, "alternate": false, "command": false, "character": "i" },
+                {"usage":  6, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": "e" },
+
+                {"usage":  7, "name": "Wheel U",       "shift": false, "control": false, "alternate": false, "command": false, "character": "RIGHT" },
+                {"usage":  8, "name": "Wheel D",       "shift": false, "control": false, "alternate": false, "command": false, "character": "LEFT" },
+                {"usage":  9, "name": "Wheel Click",   "shift": false, "control": false, "alternate": false, "command": false, "character": "s" },
+
+                {"usage": 10, "name": "Trigger",       "shift": false, "control": false, "alternate": false, "command": false, "character": "SPACE" },
+
+                {"usage": 11, "name": "U",             "shift": false, "control": false, "alternate": false, "command": true,  "character": "s" },
+                {"usage": 12, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": "h" },
+                {"usage": 13, "name": "R",             "shift": false, "control": false, "alternate": false, "command": false, "character": "p" },
+                {"usage": 14, "name": "L",             "shift": true,  "control": false, "alternate": true,  "command": true,  "character": "t" },
+
+                {"usage": 15, "name": "Q",             "shift": false, "control": false, "alternate": false, "command": false, "character": "SPACE" }
+            ]
+        },
+
+        {
+            "name": "Blue",
+            "actions": [
+                {"usage": 16, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 17, "name": "-",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 18, "name": "A",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 19, "name": "B",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 20, "name": "C",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 21, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 22, "name": "Wheel U",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 23, "name": "Wheel D",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 24, "name": "Wheel Click",   "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 25, "name": "Trigger",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 26, "name": "U",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 27, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 28, "name": "R",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 29, "name": "L",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 30, "name": "Q",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  }
+            ]
+        },
+
+        {
+            "name": "Red blink",
+            "actions": [
+                {"usage": 31, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 32, "name": "-",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 33, "name": "A",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 34, "name": "B",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 35, "name": "C",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 36, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 37, "name": "Wheel U",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 38, "name": "Wheel D",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 39, "name": "Wheel Click",   "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 40, "name": "Trigger",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 41, "name": "U",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 42, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 43, "name": "R",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 44, "name": "L",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 45, "name": "Q",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  }
+            ]
+        },
+
+        {
+            "name": "Blue blink",
+            "actions": [
+                {"usage": 46, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 47, "name": "-",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 48, "name": "A",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 49, "name": "B",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 50, "name": "C",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 51, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 52, "name": "Wheel U",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 53, "name": "Wheel D",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 54, "name": "Wheel Click",   "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 55, "name": "Trigger",       "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 56, "name": "U",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 57, "name": "D",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 58, "name": "R",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+                {"usage": 59, "name": "L",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  },
+
+                {"usage": 60, "name": "Q",             "shift": false, "control": false, "alternate": false, "command": false, "character": ""  }
+            ]
+        }
+    ]
+}

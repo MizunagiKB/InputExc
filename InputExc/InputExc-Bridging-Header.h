@@ -5,7 +5,4 @@
 #import <IOKit/hid/IOHIDLib.h>
 #import <Cocoa/Cocoa.h>
 
-#import "Input/Action/action.h"
-#import "Input/Action/action_list.h"
-
 #import "input_device.h"

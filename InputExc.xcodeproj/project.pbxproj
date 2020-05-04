@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6127752D245CD0D6001C5F90 /* JoyConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127752C245CD0D6001C5F90 /* JoyConView.swift */; };
+		6127752F245CD9D8001C5F90 /* TABMATEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127752E245CD9D8001C5F90 /* TABMATEView.swift */; };
 		6139DF082458FF7500A1CC15 /* test-IntpuActionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */; };
-		6139DF0B2458FFD800A1CC15 /* action-keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139DF0A2458FFD800A1CC15 /* action-keyboard.m */; };
 		6139DF0E2459055D00A1CC15 /* InputExcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C232453CB750096A5D7 /* InputExcUITests.swift */; };
-		614E6221245A8D8100B3BFFF /* input_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 614E6220245A8D8100B3BFFF /* input_util.m */; };
 		61939C032453CB710096A5D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C022453CB710096A5D7 /* AppDelegate.swift */; };
 		61939C052453CB710096A5D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C042453CB710096A5D7 /* ContentView.swift */; };
 		61939C072453CB750096A5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61939C062453CB750096A5D7 /* Assets.xcassets */; };
@@ -20,10 +20,12 @@
 		61939C352453CF5F0096A5D7 /* input_device.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C342453CF5F0096A5D7 /* input_device.m */; };
 		61939C3B2453E13A0096A5D7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */; };
 		61939C3D2453E1400096A5D7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3C2453E1400096A5D7 /* IOKit.framework */; };
-		61939C402453E4630096A5D7 /* action_list.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C3F2453E4630096A5D7 /* action_list.m */; };
-		61939C43245448700096A5D7 /* action.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C42245448700096A5D7 /* action.m */; };
-		61E3955A2458D9E00057AE4B /* default-TABMATE.json in Resources */ = {isa = PBXBuildFile; fileRef = 61E395592458D9E00057AE4B /* default-TABMATE.json */; };
-		61FB978B2454D61A00AF4A27 /* json_configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB978A2454D61A00AF4A27 /* json_configure.swift */; };
+		6196D669245E3AD1005D3817 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196D668245E3AD1005D3817 /* AppEnvironment.swift */; };
+		6196D66B245E3D36005D3817 /* AppBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196D66A245E3D36005D3817 /* AppBridge.swift */; };
+		6196D66D245EBA61005D3817 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196D66C245EBA61005D3817 /* SwiftyJSON.swift */; };
+		6196D66F245F6E44005D3817 /* template-Joy-Con (R).json in Resources */ = {isa = PBXBuildFile; fileRef = 6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */; };
+		6196D670245F76C9005D3817 /* template-Joy-Con (L).json in Resources */ = {isa = PBXBuildFile; fileRef = 6127752B245C5E33001C5F90 /* template-Joy-Con (L).json */; };
+		61E3955A2458D9E00057AE4B /* template-TABMATE.json in Resources */ = {isa = PBXBuildFile; fileRef = 61E395592458D9E00057AE4B /* template-TABMATE.json */; };
 		61FB979324578B1700AF4A27 /* json_schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB979224578B1700AF4A27 /* json_schema.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,10 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6127752B245C5E33001C5F90 /* default-JOY-CON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "default-JOY-CON.json"; sourceTree = "<group>"; };
+		6127752B245C5E33001C5F90 /* template-Joy-Con (L).json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-Joy-Con (L).json"; sourceTree = "<group>"; };
+		6127752C245CD0D6001C5F90 /* JoyConView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyConView.swift; sourceTree = "<group>"; };
+		6127752E245CD9D8001C5F90 /* TABMATEView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TABMATEView.swift; sourceTree = "<group>"; };
 		6139DF072458FF7500A1CC15 /* test-IntpuActionKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "test-IntpuActionKeyboard.m"; sourceTree = "<group>"; };
-		6139DF0A2458FFD800A1CC15 /* action-keyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "action-keyboard.m"; sourceTree = "<group>"; };
-		614E6220245A8D8100B3BFFF /* input_util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = input_util.m; sourceTree = "<group>"; };
 		61939BFF2453CB710096A5D7 /* InputExc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61939C022453CB710096A5D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61939C042453CB710096A5D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,12 +70,11 @@
 		61939C362453CF740096A5D7 /* input_device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = input_device.h; sourceTree = "<group>"; };
 		61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		61939C3C2453E1400096A5D7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		61939C3F2453E4630096A5D7 /* action_list.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = action_list.m; sourceTree = "<group>"; };
-		61939C412453E4830096A5D7 /* action_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = action_list.h; sourceTree = "<group>"; };
-		61939C42245448700096A5D7 /* action.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = action.m; sourceTree = "<group>"; };
-		61939C45245448E70096A5D7 /* action.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = action.h; sourceTree = "<group>"; };
-		61E395592458D9E00057AE4B /* default-TABMATE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "default-TABMATE.json"; sourceTree = "<group>"; };
-		61FB978A2454D61A00AF4A27 /* json_configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json_configure.swift; sourceTree = "<group>"; };
+		6196D668245E3AD1005D3817 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		6196D66A245E3D36005D3817 /* AppBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBridge.swift; sourceTree = "<group>"; };
+		6196D66C245EBA61005D3817 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-Joy-Con (R).json"; sourceTree = "<group>"; };
+		61E395592458D9E00057AE4B /* template-TABMATE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-TABMATE.json"; sourceTree = "<group>"; };
 		61FB979224578B1700AF4A27 /* json_schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json_schema.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,14 +133,18 @@
 				61E395582458D9A10057AE4B /* Resources */,
 				61E3955B2458E5260057AE4B /* Input */,
 				61939C022453CB710096A5D7 /* AppDelegate.swift */,
+				6196D66A245E3D36005D3817 /* AppBridge.swift */,
+				6196D668245E3AD1005D3817 /* AppEnvironment.swift */,
 				61939C042453CB710096A5D7 /* ContentView.swift */,
+				6127752E245CD9D8001C5F90 /* TABMATEView.swift */,
+				6127752C245CD0D6001C5F90 /* JoyConView.swift */,
 				61939C062453CB750096A5D7 /* Assets.xcassets */,
 				61939C0B2453CB750096A5D7 /* Main.storyboard */,
 				61939C0E2453CB750096A5D7 /* Info.plist */,
 				61939C0F2453CB750096A5D7 /* InputExc.entitlements */,
 				61939C082453CB750096A5D7 /* Preview Content */,
-				61FB978A2454D61A00AF4A27 /* json_configure.swift */,
 				61FB979224578B1700AF4A27 /* json_schema.swift */,
+				6196D66C245EBA61005D3817 /* SwiftyJSON.swift */,
 			);
 			path = InputExc;
 			sourceTree = "<group>";
@@ -180,23 +185,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		61939C44245448A60096A5D7 /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				61939C412453E4830096A5D7 /* action_list.h */,
-				61939C3F2453E4630096A5D7 /* action_list.m */,
-				61939C45245448E70096A5D7 /* action.h */,
-				61939C42245448700096A5D7 /* action.m */,
-				6139DF0A2458FFD800A1CC15 /* action-keyboard.m */,
-			);
-			path = Action;
-			sourceTree = "<group>";
-		};
 		61E395582458D9A10057AE4B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				61E395592458D9E00057AE4B /* default-TABMATE.json */,
-				6127752B245C5E33001C5F90 /* default-JOY-CON.json */,
+				61E395592458D9E00057AE4B /* template-TABMATE.json */,
+				6127752B245C5E33001C5F90 /* template-Joy-Con (L).json */,
+				6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -206,8 +200,6 @@
 			children = (
 				61939C362453CF740096A5D7 /* input_device.h */,
 				61939C342453CF5F0096A5D7 /* input_device.m */,
-				614E6220245A8D8100B3BFFF /* input_util.m */,
-				61939C44245448A60096A5D7 /* Action */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -318,7 +310,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61E3955A2458D9E00057AE4B /* default-TABMATE.json in Resources */,
+				61E3955A2458D9E00057AE4B /* template-TABMATE.json in Resources */,
+				6196D670245F76C9005D3817 /* template-Joy-Con (L).json in Resources */,
+				6196D66F245F6E44005D3817 /* template-Joy-Con (R).json in Resources */,
 				61939C0D2453CB750096A5D7 /* Main.storyboard in Resources */,
 				61939C0A2453CB750096A5D7 /* Preview Assets.xcassets in Resources */,
 				61939C072453CB750096A5D7 /* Assets.xcassets in Resources */,
@@ -346,14 +340,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				614E6221245A8D8100B3BFFF /* input_util.m in Sources */,
-				6139DF0B2458FFD800A1CC15 /* action-keyboard.m in Sources */,
 				61939C352453CF5F0096A5D7 /* input_device.m in Sources */,
-				61939C43245448700096A5D7 /* action.m in Sources */,
-				61939C402453E4630096A5D7 /* action_list.m in Sources */,
+				6196D66B245E3D36005D3817 /* AppBridge.swift in Sources */,
+				6196D66D245EBA61005D3817 /* SwiftyJSON.swift in Sources */,
+				6196D669245E3AD1005D3817 /* AppEnvironment.swift in Sources */,
 				61939C052453CB710096A5D7 /* ContentView.swift in Sources */,
-				61FB978B2454D61A00AF4A27 /* json_configure.swift in Sources */,
+				6127752D245CD0D6001C5F90 /* JoyConView.swift in Sources */,
 				61939C032453CB710096A5D7 /* AppDelegate.swift in Sources */,
+				6127752F245CD9D8001C5F90 /* TABMATEView.swift in Sources */,
 				61FB979324578B1700AF4A27 /* json_schema.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

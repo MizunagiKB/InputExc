@@ -3,23 +3,87 @@
 //  InputExc
 //
 
+// ----------------------------------------------------------------- import(s)
 import Cocoa
 import SwiftUI
 
 
+// ----------------------------------------------------------------- struct(s)
+func req_open_device(io_device: IOHIDDevice) -> Bool
+{
+    let app = NSApplication.shared.delegate as! AppDelegate
+    return app.bridge.device_open(io_device: io_device)
+}
+
+
+func req_close_device(io_device: IOHIDDevice) -> Bool
+{
+    let app = NSApplication.shared.delegate as! AppDelegate
+    return app.bridge.device_close(io_device: io_device)
+}
+
+
+// ----------------------------------------------------------------- struct(s)
 struct ContentView: View {
 
-    @State var tab_selected = 0
-    @State var enable_status = false
-    @State var lbl_enable_status = "Inactive"
-    @State var dict_button_status: [Int: Color] = [:]
+//    @State var tab_selected = 0
+//    @State var enable_status = false
+//    @State var lbl_enable_status = "Inactive"
+//    @State var dict_button_status: [Int: Color] = [:]
 
-    @EnvironmentObject var env: UIObserve
-
+//    @State var product_curr = ""
     
+    @State var selected_device: IOHIDDevice? = nil
+    @State var device_opened: Bool = false
+
+    @EnvironmentObject var env: AppEnvironment
+
     var body: some View {
         VStack {
 
+            MenuButton(label: Text(self.env.selected_product))
+            {
+                ForEach(self.env.list_device, id: \.self)
+                {
+                    device in Button(action: {
+                        self.env.selected_product = device.product
+                        self.env.selected_serial_id = device.serial_id
+                        self.env.device_input_status = ""
+                        self.selected_device = device.device
+                        self.device_opened = device.b_opened
+                    }) {
+                        Text(device.product)
+                    }
+                }
+            }
+            
+            Text(self.env.device_input_status)
+
+            if self.env.selected_product == "TABMATE" {
+                TABMATEView(conf: self.env.get_conf_device())
+            } else if self.env.selected_product == "Joy-Con (L)" {
+                JoyConView(conf: self.env.get_conf_device())
+            } else if self.env.selected_product == "Joy-Con (R)" {
+                JoyConView(conf: self.env.get_conf_device())
+            } else {
+            }
+
+            HStack {
+                Button(action: { self.env.config.save() }) { Text("Save") }
+                Button(action: { self.device_opened = req_open_device(io_device: self.selected_device!) }) { Text("Device Open") }.disabled(self.device_opened)
+                Button(action: { self.device_opened = !req_close_device(io_device: self.selected_device!) }) { Text("Device Close") }.disabled(!self.device_opened)
+            }.disabled(self.env.selected_product.count == 0)
+
+            Divider()
+
+            
+            
+            
+            
+            
+            
+            
+            #if false
             Text(self.env.connection_status)
             
             HStack {
@@ -28,141 +92,15 @@ struct ContentView: View {
                 Text("Product: " + self.env.product)
             }
                 .padding(1)
+            
 
             Divider()
 
-            TabView() {
-                Form {
-                    VStack {
-                        ForEach(0..<self.env.iexc_settings.devices[0].pages[0].buttons.count) {
-                            i in HStack {
-                                Text(self.env.iexc_settings.devices[0].pages[0].buttons[i].name)
-                                    .frame(width: 96.0)
-                                Toggle("shift", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].shift)
-                                Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].control)
-                                Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].alternate)
-                                Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[0].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[0].buttons[i].character,
-                                          onEditingChanged: { b_changed in
-                                            if(b_changed) {} else
-                                            {
-                                                let app = NSApplication.shared.delegate as! AppDelegate
-                                                let s = self.env.iexc_settings.devices[0].pages[0].buttons[i].character
-                                                if(app.evt_check_available_character(s: s) == true) {
-                                                    self.dict_button_status[i] = Color.primary
-                                                } else {
-                                                    self.dict_button_status[i] = Color.red
-                                                }
-                                            }
-                                }
-                                )
-                                    .frame(width: 64.0)
-                                    .multilineTextAlignment(TextAlignment.center)
-                                    .foregroundColor(self.dict_button_status[i])
-                            }.padding(1)
-                        }
-                    }
-                }.tabItem { Text(self.env.iexc_settings.devices[0].pages[0].name)}
-                    .tag(self.env.iexc_settings.devices[0].pages[0].id)
-
-                Form {
-                    VStack {
-                        ForEach(0..<self.env.iexc_settings.devices[0].pages[1].buttons.count) {
-                            i in HStack {
-                                Text(self.env.iexc_settings.devices[0].pages[1].buttons[i].name)
-                                    .frame(width: 96.0)
-                                Toggle("shift", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].shift)
-                                Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].control)
-                                Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].alternate)
-                                Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[1].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[1].buttons[i].character,
-                                          onEditingChanged: { b_changed in
-                                            if(b_changed) {} else
-                                            {
-                                                let app = NSApplication.shared.delegate as! AppDelegate
-                                                let s = self.env.iexc_settings.devices[0].pages[1].buttons[i].character
-                                                if(app.evt_check_available_character(s: s) == true) {
-                                                    self.dict_button_status[i] = Color.primary
-                                                } else {
-                                                    self.dict_button_status[i] = Color.red
-                                                }
-                                            }
-                                }
-                                )
-                                    .frame(width: 64.0)
-                                    .multilineTextAlignment(TextAlignment.center)
-                                    .foregroundColor(self.dict_button_status[i])
-                            }.padding(1)
-                        }
-                    }
-                }.tabItem { Text(self.env.iexc_settings.devices[0].pages[1].name)}
-                    .tag(self.env.iexc_settings.devices[0].pages[1].id)
-
-                Form {
-                    VStack {
-                        ForEach(0..<self.env.iexc_settings.devices[0].pages[2].buttons.count) {
-                            i in HStack {
-                                Text(self.env.iexc_settings.devices[0].pages[2].buttons[i].name)
-                                    .frame(width: 96.0)
-                                Toggle("shift", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].shift)
-                                Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].control)
-                                Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].alternate)
-                                Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[2].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[2].buttons[i].character,
-                                          onEditingChanged: { b_changed in
-                                            if(b_changed) {} else
-                                            {
-                                                let app = NSApplication.shared.delegate as! AppDelegate
-                                                let s = self.env.iexc_settings.devices[0].pages[2].buttons[i].character
-                                                if(app.evt_check_available_character(s: s) == true) {
-                                                    self.dict_button_status[i] = Color.primary
-                                                } else {
-                                                    self.dict_button_status[i] = Color.red
-                                                }
-                                            }
-                                }
-                                )
-                                    .frame(width: 64.0)
-                                    .multilineTextAlignment(TextAlignment.center)
-                                    .foregroundColor(self.dict_button_status[i])
-                            }.padding(1)
-                        }
-                    }
-                }.tabItem { Text(self.env.iexc_settings.devices[0].pages[2].name)}
-                    .tag(self.env.iexc_settings.devices[0].pages[2].id)
-
-                Form {
-                    VStack {
-                        ForEach(0..<self.env.iexc_settings.devices[0].pages[3].buttons.count) {
-                            i in HStack {
-                                Text(self.env.iexc_settings.devices[0].pages[3].buttons[i].name)
-                                    .frame(width: 96.0)
-                                Toggle("shift", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].shift)
-                                Toggle("control", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].control)
-                                Toggle("alternate", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].alternate)
-                                Toggle("command", isOn: self.$env.iexc_settings.devices[0].pages[3].buttons[i].command)
-                                TextField("-", text: self.$env.iexc_settings.devices[0].pages[3].buttons[i].character,
-                                          onEditingChanged: { b_changed in
-                                            if(b_changed) {} else
-                                            {
-                                                let app = NSApplication.shared.delegate as! AppDelegate
-                                                let s = self.env.iexc_settings.devices[0].pages[3].buttons[i].character
-                                                if(app.evt_check_available_character(s: s) == true) {
-                                                    self.dict_button_status[i] = Color.primary
-                                                } else {
-                                                    self.dict_button_status[i] = Color.red
-                                                }
-                                            }
-                                }
-                                )
-                                    .frame(width: 64.0)
-                                    .multilineTextAlignment(TextAlignment.center)
-                                    .foregroundColor(self.dict_button_status[i])
-                            }.padding(1)
-                        }
-                    }
-                }.tabItem { Text(self.env.iexc_settings.devices[0].pages[3].name)}
-                    .tag(self.env.iexc_settings.devices[0].pages[3].id)
+            if self.env.product_curr == "TABMATE" {
+                //TABMATEView()
+            } else if self.env.product_curr == "JOY-CON" {
+                //JoyConView()
+            } else {
             }
 
             Divider()
@@ -221,7 +159,7 @@ struct ContentView: View {
                 ) { Text("Inactive") }
                     .disabled(self.enable_status ? false : true)
             }
-
+            #endif
         }
         .padding()
         .frame(width: 540.0, height: 680.0)

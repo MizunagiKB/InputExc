@@ -13,23 +13,24 @@ bool check_available_character(const NSString* s);
 @interface
 InputDevice: NSObject {
     IOHIDManagerRef ref_manager;
-    CFMutableArrayRef ary_ref_device;
-    CFMutableDictionaryRef dict_event_guard;
     CFMutableDictionaryRef dict_kb_table;
 
-    NSObject* ref_oc_bridge;
-    
-    InputSource* ref_input_source;
+    NSObject* ref_bridge;
+    CFMutableDictionaryRef dict_callback;
+
     BOOL b_enable;
 }
 
-@property NSObject* oc_bridge;
-@property InputSource* input_source;
+@property NSObject* bridge;
 
 - (id) init;
 - (void) pro_proc;
 - (void) epi_proc;
-- (void) set_enable:(BOOL)b_enable;
+
+- (BOOL) device_open:(IOHIDDeviceRef)ref_device;
+- (BOOL) device_close:(IOHIDDeviceRef)ref_device;
+
+- (CGKeyCode) CharacterToKeycode:(NSString*)character;
 @end
 
 

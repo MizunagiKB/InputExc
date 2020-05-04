@@ -1,0 +1,33 @@
+{
+    "product": "Joy-Con (R)",
+    "vendor_id": 0,
+    "product_id": 0,
+    "serial_id": "",
+
+    "pages": [
+        {
+            "name": "Joy-Con (R)",
+            "actions": [
+                {"usage": 57, "name": "Analog U",      "shift": false, "control": false, "alternate": false, "command": false, "character": "", "value": 2 },
+                {"usage": 57, "name": "Analog D",      "shift": false, "control": false, "alternate": false, "command": false, "character": "", "value": 6 },
+                {"usage": 57, "name": "Analog R",      "shift": false, "control": false, "alternate": false, "command": false, "character": "", "value": 4 },
+                {"usage": 57, "name": "Analog L",      "shift": false, "control": false, "alternate": false, "command": false, "character": "", "value": 0 },
+                {"usage": 12, "name": "Analog Click",  "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+
+                {"usage":  1, "name": "Button A",      "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                {"usage":  3, "name": "Button B",      "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                {"usage":  2, "name": "Button X",      "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                {"usage":  4, "name": "Button Y",      "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                        
+                {"usage": 15, "name": "R",             "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+
+                {"usage": 16, "name": "ZR",            "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                {"usage":  5, "name": "SL",            "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                {"usage":  6, "name": "SR",            "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+
+                {"usage": 10, "name": "+",             "shift": false, "control": false, "alternate": false, "command": false, "character": "" },
+                {"usage": 13, "name": "[H]",           "shift": false, "control": false, "alternate": false, "command": false, "character": "" }
+            ]
+        }
+    ]
+}
