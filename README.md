@@ -1,5 +1,11 @@
 # InputExc
+
+TABMATEとJoy-ConをmacOSのキーボードとして使用するためのアプリケーションです。
+
+* SwiftUIを使用している為、macOS 10.15以降が必要です。
+
 An application that converts (Bluetooth)gamepad input to keyboard
+
 
 ## Usage
 
