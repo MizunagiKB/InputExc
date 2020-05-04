@@ -6,8 +6,8 @@
 import SwiftUI
 
 
-struct TABMATEView: View {
-
+struct TABMATEView: View
+{
     @ObservedObject var conf: IConfDevice
 
     var body: some View {

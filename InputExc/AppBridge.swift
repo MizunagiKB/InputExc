@@ -9,16 +9,16 @@ import Foundation
 import CoreGraphics
 
 
-@objc class AppBridge: NSObject {
+@objc class AppBridge: NSObject
+{
     var env: AppEnvironment!
     var dev: InputDevice!
 
-    
-    func save_settings() {
-        env.config.save()
+    func save_settings()
+    {
+        self.env.config.save()
     }
 
-    
     func device_open(io_device: IOHIDDevice) -> Bool
     {
         for n in 0..<self.env.list_device.count
@@ -33,8 +33,7 @@ import CoreGraphics
         
         return false
     }
-    
-    
+
     func device_close(io_device: IOHIDDevice) -> Bool
     {
         for n in 0..<self.env.list_device.count
@@ -49,8 +48,7 @@ import CoreGraphics
         
         return true
     }
-    
-    
+
     func send_keycode(action: IConfAction, keydown: Bool)
     {
         let key_code = dev.character(toKeycode: action.character)
@@ -69,7 +67,6 @@ import CoreGraphics
         event!.post(tap: loc!)
     }
 
-    
     @objc func evt_device_input(device: IOHIDDevice, usage: Int32, value: Int32)
     {
         let product = IOHIDDeviceGetProperty(device, kIOHIDProductKey as CFString) as! String
@@ -80,11 +77,16 @@ import CoreGraphics
         NSLog(self.env.device_input_status)
 
 
-        for conf_device in self.env.config.conf.devices {
-            if conf_device.serial_id == serial_id {
-                for page in conf_device.pages {
-                    for action in page.actions {
-                        if action.usage == usage {
+        for conf_device in self.env.config.conf.devices
+        {
+            if conf_device.serial_id == serial_id
+            {
+                for page in conf_device.pages
+                {
+                    for action in page.actions
+                    {
+                        if action.usage == usage
+                        {
                             if action.character.count > 0
                             {
                                 if action.value == nil
@@ -101,21 +103,22 @@ import CoreGraphics
             }
         }
     }
-
     
     @objc func append_device(device: IOHIDDevice)
     {
         var b_found = false
 
-        for dev in self.env.list_device {
-            if dev.device == device {
+        for dev in self.env.list_device
+        {
+            if dev.device == device
+            {
                 b_found = true
                 break
             }
         }
         
-        if b_found == false {
-
+        if b_found == false
+        {
             let serial_id = IOHIDDeviceGetProperty(device, kIOHIDSerialNumberKey as CFString)
 
             if(serial_id != nil)
@@ -135,7 +138,6 @@ import CoreGraphics
         }
     }
 
-    
     @objc func remove_device(device: IOHIDDevice)
     {
         var b_remove = false

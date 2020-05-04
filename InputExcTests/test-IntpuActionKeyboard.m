@@ -8,8 +8,6 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
-#import "../InputExc/Input/Action/action.h"
-
 
 @interface InputActionKeyboardTest: XCTestCase {}
 @end

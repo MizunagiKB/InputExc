@@ -22,13 +22,11 @@ class AppConfig
 
     var conf: IConfDevices = IConfDevices()
 
-    
     init()
     {
         self.create_dir()
         self.load()
     }
-
 
     func create_dir()
     {
@@ -44,7 +42,6 @@ class AppConfig
             }
         }
     }
-
 
     func load_template(template: String) -> IConfDevice
     {
@@ -64,7 +61,6 @@ class AppConfig
         return IConfDevice()
     }
 
-    
     func load()
     {
         let m = FileManager.default
@@ -84,7 +80,6 @@ class AppConfig
         }
     }
 
-    
     func save()
     {
         let js_result: JSON = self.conf.to_json_object()
@@ -124,7 +119,6 @@ class AppEnvironment: ObservableObject
     @Published var list_device: Array<Device> = []
 
     var config: AppConfig!
-
 
     func get_conf_device() -> IConfDevice
     {

@@ -6,7 +6,8 @@
 import Foundation
 
 
-class IConfAction {
+class IConfAction
+{
     var usage: Int32 = 0
     var value: Int32? = nil
     var name: String = ""
@@ -36,25 +37,26 @@ class IConfAction {
 
     func to_json_object() -> JSON
     {
-        var js_result: JSON = JSON()
+        var j: JSON = JSON()
 
-        js_result["usage"].int32 = self.usage
+        j["usage"].int32 = self.usage
 
-        if self.value == nil {} else { js_result["value"].int32 = self.value }
+        if self.value == nil {} else { j["value"].int32 = self.value }
 
-        js_result["name"].string = self.name
-        js_result["shift"].bool = self.shift
-        js_result["control"].bool = self.control
-        js_result["alternate"].bool = self.alternate
-        js_result["command"].bool = self.command
-        js_result["character"].string = self.character
+        j["name"].string = self.name
+        j["shift"].bool = self.shift
+        j["control"].bool = self.control
+        j["alternate"].bool = self.alternate
+        j["command"].bool = self.command
+        j["character"].string = self.character
 
-        return js_result
+        return j
     }
 }
 
 
-class IConfPage {
+class IConfPage
+{
     var name: String = ""
     var actions: Array<IConfAction> = []
 
@@ -69,17 +71,18 @@ class IConfPage {
 
     func to_json_object() -> JSON
     {
-        var js_result: JSON = JSON()
+        var j: JSON = JSON()
 
-        js_result["name"].string = self.name
-        js_result["actions"].arrayObject = self.actions.map {$0.to_json_object()}
+        j["name"].string = self.name
+        j["actions"].arrayObject = self.actions.map {$0.to_json_object()}
         
-        return js_result
+        return j
     }
 }
 
 
-class IConfDevice: ObservableObject {
+class IConfDevice: ObservableObject
+{
     @Published var product: String = ""
     @Published var vendor_id: Int32 = 0
     @Published var product_id: Int32 = 0
@@ -101,25 +104,29 @@ class IConfDevice: ObservableObject {
 
     func to_json_object() -> JSON
     {
-        var js_result: JSON = JSON()
+        var j: JSON = JSON()
 
-        js_result["product"].string = self.product
-        js_result["vendor_id"].int32 = self.vendor_id
-        js_result["product_id"].int32 = self.product_id
-        js_result["serial_id"].string = self.serial_id
-        js_result["pages"].arrayObject = self.pages.map {$0.to_json_object()}
+        j["product"].string = self.product
+        j["vendor_id"].int32 = self.vendor_id
+        j["product_id"].int32 = self.product_id
+        j["serial_id"].string = self.serial_id
+        j["pages"].arrayObject = self.pages.map {$0.to_json_object()}
         
-        return js_result
+        return j
     }
 }
 
 
-class IConfDevices {
+/// <#Description#>
+class IConfDevices
+{
     var devices: Array<IConfDevice> = []
 
     init() {}
     init(j: JSON) { self.from_json_object(j: j) }
     
+    /// <#Description#>
+    /// - Parameter j: JSONオブジェクト
     func from_json_object(j: JSON)
     {
         self.devices = j["devices"].arrayValue.map {IConfDevice(j: $0)}
@@ -127,11 +134,13 @@ class IConfDevices {
 
     func to_json_object() -> JSON
     {
-        var js_result: JSON = JSON()
+        var j: JSON = JSON()
 
-        js_result["devices"].arrayObject = self.devices.map {$0.to_json_object()}
+        j["devices"].arrayObject = self.devices.map {$0.to_json_object()}
         
-        return js_result
+        return j
     }
 }
 
+
+// [EOF]

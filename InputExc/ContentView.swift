@@ -8,7 +8,7 @@ import Cocoa
 import SwiftUI
 
 
-// ----------------------------------------------------------------- struct(s)
+// --------------------------------------------------------------- function(s)
 func req_open_device(io_device: IOHIDDevice) -> Bool
 {
     let app = NSApplication.shared.delegate as! AppDelegate
@@ -24,15 +24,8 @@ func req_close_device(io_device: IOHIDDevice) -> Bool
 
 
 // ----------------------------------------------------------------- struct(s)
-struct ContentView: View {
-
-//    @State var tab_selected = 0
-//    @State var enable_status = false
-//    @State var lbl_enable_status = "Inactive"
-//    @State var dict_button_status: [Int: Color] = [:]
-
-//    @State var product_curr = ""
-    
+struct ContentView: View
+{
     @State var selected_device: IOHIDDevice? = nil
     @State var device_opened: Bool = false
 
@@ -73,93 +66,6 @@ struct ContentView: View {
                 Button(action: { self.device_opened = req_open_device(io_device: self.selected_device!) }) { Text("Device Open") }.disabled(self.device_opened)
                 Button(action: { self.device_opened = !req_close_device(io_device: self.selected_device!) }) { Text("Device Close") }.disabled(!self.device_opened)
             }.disabled(self.env.selected_product.count == 0)
-
-            Divider()
-
-            
-            
-            
-            
-            
-            
-            
-            #if false
-            Text(self.env.connection_status)
-            
-            HStack {
-                Text("VendorID: \(String(format: "%04X", self.env.vendor_id))")
-                Text("ProductID: \(String(format: "%04X", self.env.product_id))")
-                Text("Product: " + self.env.product)
-            }
-                .padding(1)
-            
-
-            Divider()
-
-            if self.env.product_curr == "TABMATE" {
-                //TABMATEView()
-            } else if self.env.product_curr == "JOY-CON" {
-                //JoyConView()
-            } else {
-            }
-
-            Divider()
-
-            HStack {
-
-                Button(
-                    action:
-                    {
-                        let app = NSApplication.shared.delegate as! AppDelegate
-
-                        app.evt_save_settings()
-                    }
-                ) {
-                    Text("Save")
-                }
-
-                Button(
-                    action:
-                    {
-                        let app = NSApplication.shared.delegate as! AppDelegate
-
-                        app.evt_update_settings()
-                    }
-                ) {
-                    Text("Update")
-                }
-
-                Button(
-                    action:
-                    {
-                        let app = NSApplication.shared.delegate as! AppDelegate
-
-                        if(self.enable_status == false)
-                        {
-                            self.enable_status = true
-                        }
-
-                        app.evt_active(enable: self.enable_status)
-                    }
-                ) { Text("Active") }
-                    .disabled(self.enable_status ? true : false)
-                
-                Button(
-                    action:
-                    {
-                        let app = NSApplication.shared.delegate as! AppDelegate
-
-                        if(self.enable_status)
-                        {
-                            self.enable_status = false
-                        }
-
-                        app.evt_active(enable: self.enable_status)
-                    }
-                ) { Text("Inactive") }
-                    .disabled(self.enable_status ? false : true)
-            }
-            #endif
         }
         .padding()
         .frame(width: 540.0, height: 680.0)

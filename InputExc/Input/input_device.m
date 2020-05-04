@@ -24,6 +24,7 @@ const UInt8* get_keyboard_layout()
                                        source_curr,
                                        kTISPropertyUnicodeKeyLayoutData
                                        );
+
     if(layout == nil)
     {
         source_curr = TISCopyCurrentKeyboardLayoutInputSource();
@@ -137,28 +138,8 @@ void input_callback(void* ctx, IOReturn result, void* sender, IOHIDValueRef raw_
     
     const IOHIDElementRef element = IOHIDValueGetElement(raw_value);
     
-    //const SInt32 type = IOHIDElementGetType(element);
-    //const SInt32 page = IOHIDElementGetUsagePage(element);
     const SInt32 usage = IOHIDElementGetUsage(element);
     const SInt32 value = (SInt32)IOHIDValueGetIntegerValue(raw_value);
-
-    {
-        //OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
-
-//        ActionSequence* seq = [self->ref_input_source sequnece_get:usage];
-//
-  //      if(seq != nil)
-    //    {
-      //      const CFIndex ary_count = CFArrayGetCount(seq->ary_action);
-
-        //    for(CFIndex i = 0; i < ary_count; i ++)
-          //  {
-            //    Action* act = CFArrayGetValueAtIndex(seq->ary_action, i);
-              //  [act event_dispatch:i_value];
-//            }
-  //      }
-
-    }
 
     [bridge evt_device_inputWithDevice:self -> ref_device usage:usage value:value];
 }
@@ -352,3 +333,5 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 
 @end
 
+
+// [EOF]

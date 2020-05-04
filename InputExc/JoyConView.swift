@@ -7,8 +7,8 @@ import Cocoa
 import SwiftUI
 
 
-struct JoyConView: View {
-
+struct JoyConView: View
+{
     @ObservedObject var conf: IConfDevice
 
     var body: some View {
