@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
         bridge.env = AppEnvironment()
         bridge.env.config = AppConfig()
 
-        bridge.dev = InputDevice()
+        bridge.dev = IODevAttacher()
         bridge.dev.bridge = bridge
         bridge.dev.pro_proc()
 

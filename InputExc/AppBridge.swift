@@ -12,7 +12,7 @@ import CoreGraphics
 @objc class AppBridge: NSObject
 {
     var env: AppEnvironment!
-    var dev: InputDevice!
+    var dev: IODevAttacher!
 
     func save_settings()
     {
@@ -64,7 +64,7 @@ import CoreGraphics
         if action.alternate { event?.flags.insert(.maskAlternate) }
         if action.command { event?.flags.insert(.maskCommand) }
         
-        event!.post(tap: loc!)
+        event?.post(tap: loc!)
     }
 
     @objc func evt_device_input(device: IOHIDDevice, usage: Int32, value: Int32)

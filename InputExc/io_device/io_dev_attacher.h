@@ -7,28 +7,23 @@
 #define input_device_h
 
 
-bool check_available_character(const NSString* s);
-
-
 @interface
-InputDevice: NSObject {
+IODevAttacher: NSObject {
     IOHIDManagerRef ref_manager;
     CFMutableDictionaryRef dict_kb_table;
 
     NSObject* ref_bridge;
     CFMutableDictionaryRef dict_callback;
-
-    BOOL b_enable;
 }
 
 @property NSObject* bridge;
 
-- (id) init;
+//- (id) init;
 - (void) pro_proc;
 - (void) epi_proc;
 
-- (BOOL) device_open:(IOHIDDeviceRef)ref_device;
-- (BOOL) device_close:(IOHIDDeviceRef)ref_device;
+- (BOOL) device_open:(IOHIDDeviceRef)ref_io_device;
+- (BOOL) device_close:(IOHIDDeviceRef)ref_io_device;
 
 - (CGKeyCode) CharacterToKeycode:(NSString*)character;
 @end

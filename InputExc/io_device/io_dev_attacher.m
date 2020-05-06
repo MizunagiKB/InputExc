@@ -4,12 +4,13 @@
 //
 
 // ----------------------------------------------------------------- import(s)
-#import <CoreFoundation/CoreFoundation.h>
+#import <Foundation/Foundation.h>
 #import <IOKit/hid/IOHIDLib.h>
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
-#import "input_device.h"
+#import "io_dev_attacher.h"
+#import "io_dev_callback.h"
 
 #import "InputExc-Swift.h"
 
@@ -117,38 +118,15 @@ static void create_mutable_dict(CFMutableArrayRef ary_match, UInt32 page, UInt32
 }
 
 
-typedef struct TagCDeviceCallback
-{
-    InputDevice* p_input_device;
+@implementation IODevAttacher
 
-    IOHIDDeviceRef ref_device;
-    CFMutableDictionaryRef dict_event_guard;
-} CDeviceCallback;
-
-
-@implementation InputDevice
 
 @synthesize bridge = ref_bridge;
 
 
-void input_callback(void* ctx, IOReturn result, void* sender, IOHIDValueRef raw_value)
-{
-    CDeviceCallback* self = ctx;
-    AppBridge* bridge = (AppBridge*)self -> p_input_device -> ref_bridge;
-
-    
-    const IOHIDElementRef element = IOHIDValueGetElement(raw_value);
-    
-    const SInt32 usage = IOHIDElementGetUsage(element);
-    const SInt32 value = (SInt32)IOHIDValueGetIntegerValue(raw_value);
-
-    [bridge evt_device_inputWithDevice:self -> ref_device usage:usage value:value];
-}
-
-
 void evt_device_attach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef ref_device)
 {
-    InputDevice* self = (__bridge InputDevice*)ctx;
+    IODevAttacher* self = (__bridge IODevAttacher*)ctx;
     AppBridge* bridge = (AppBridge*)self.bridge;
 
 
@@ -158,7 +136,7 @@ void evt_device_attach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 
 void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef ref_device)
 {
-    InputDevice* self = (__bridge InputDevice*)ctx;
+    IODevAttacher* self = (__bridge IODevAttacher*)ctx;
     AppBridge* bridge = (AppBridge*)self.bridge;
 
     
@@ -173,8 +151,7 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
         dict_kb_table = create_kb_table();
 
         ref_bridge = nil;
-        dict_callback = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, NULL);
-        b_enable = false;
+        dict_callback = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
     }
 
     return self;
@@ -183,93 +160,82 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 
 - (void) pro_proc
 {
-    ref_manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
-
-    CFMutableArrayRef ary_match = CFArrayCreateMutable(kCFAllocatorDefault, 0, &kCFTypeArrayCallBacks);
-
-    create_mutable_dict(ary_match, kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad);
-    create_mutable_dict(ary_match, kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
-    create_mutable_dict(ary_match, kHIDPage_GenericDesktop, kHIDUsage_GD_MultiAxisController);
-    
-    IOHIDManagerSetDeviceMatchingMultiple(ref_manager, ary_match);
-    CFRelease(ary_match);
-
-    IOHIDManagerRegisterDeviceMatchingCallback(
-                                               ref_manager,
-                                               evt_device_attach,
-                                               (__bridge void * _Nullable)(self)
-                                               );
-    IOHIDManagerRegisterDeviceRemovalCallback(
-                                              ref_manager,
-                                              evt_device_detach,
-                                              (__bridge void * _Nullable)(self)
-                                              );
-
-    IOHIDManagerScheduleWithRunLoop(ref_manager, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-    IOReturn io_result = IOHIDManagerOpen(ref_manager, kIOHIDOptionsTypeNone);
-    
-    if(io_result != 0)
+    if( self -> ref_manager == nil)
     {
-        //OCBridge* self_oc_bridge = (OCBridge *)self -> ref_oc_bridge;
-        //[self_oc_bridge update_connection_statusWithConnection_status:@"IOHIDManagerOpen error"];
+        ref_manager = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
+
+        CFMutableArrayRef ary_match = CFArrayCreateMutable(kCFAllocatorDefault, 0, &kCFTypeArrayCallBacks);
+
+        create_mutable_dict(ary_match, kHIDPage_GenericDesktop, kHIDUsage_GD_GamePad);
+        create_mutable_dict(ary_match, kHIDPage_GenericDesktop, kHIDUsage_GD_Joystick);
+        create_mutable_dict(ary_match, kHIDPage_GenericDesktop, kHIDUsage_GD_MultiAxisController);
+        
+        IOHIDManagerSetDeviceMatchingMultiple(ref_manager, ary_match);
+        CFRelease(ary_match);
+
+        IOHIDManagerRegisterDeviceMatchingCallback(
+                                                   ref_manager,
+                                                   evt_device_attach,
+                                                   (__bridge void * _Nullable)(self)
+                                                   );
+        IOHIDManagerRegisterDeviceRemovalCallback(
+                                                  ref_manager,
+                                                  evt_device_detach,
+                                                  (__bridge void * _Nullable)(self)
+                                                  );
+
+        IOHIDManagerScheduleWithRunLoop(ref_manager, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+        IOReturn io_result = IOHIDManagerOpen(ref_manager, kIOHIDOptionsTypeNone);
+        
+        if(io_result != 0)
+        {
+        }
     }
 }
 
 
 - (void) epi_proc
 {
-    IOHIDManagerClose(ref_manager, kIOHIDOptionsTypeNone);
+    if(self -> ref_manager != nil)
+    {
+        IOHIDManagerUnscheduleFromRunLoop(ref_manager, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+        IOHIDManagerClose(ref_manager, kIOHIDOptionsTypeNone);
+        
+        self -> ref_manager = nil;
+    }
 }
 
 
-- (BOOL) device_open:(IOHIDDeviceRef)ref_device
+- (BOOL) device_open:(IOHIDDeviceRef)ref_io_device
 {
-    CDeviceCallback* p_callback;
+    IODevCallback* ref_io_dev_callback;
+    IOReturn io_result;
     
-    p_callback = malloc(sizeof(CDeviceCallback));
-    p_callback -> p_input_device = self;
-    p_callback -> ref_device = ref_device;
-    p_callback -> dict_event_guard = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-    
-    
-    CFDictionarySetValue(dict_callback, ref_device, p_callback);
-    
-    
-    IOHIDDeviceRegisterInputValueCallback(
-                                          ref_device,
-                                          input_callback,
-                                          p_callback
-                                          );
+    ref_io_dev_callback = [[IODevCallback alloc] init];
 
-    IOHIDDeviceScheduleWithRunLoop(ref_device, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-    IOReturn io_result = IOHIDDeviceOpen(ref_device, kIOHIDOptionsTypeNone);
+    io_result = [ref_io_dev_callback open:self IOHIDDeviceRef:ref_io_device];
 
-    
+    if(io_result == 0)
+    {
+        CFDictionarySetValue(dict_callback, ref_io_device, (__bridge const void *)(ref_io_dev_callback));
+    }
+
+
     return io_result == 0;
 }
 
 
-- (BOOL) device_close:(IOHIDDeviceRef)ref_device
+- (BOOL) device_close:(IOHIDDeviceRef)ref_io_device
 {
-    CDeviceCallback* p_callback = (CDeviceCallback *)CFDictionaryGetValue(dict_callback, ref_device);
+    const IODevCallback* ref_io_dev_callback = (IODevCallback *)CFDictionaryGetValue(dict_callback, ref_io_device);
+    IOReturn io_result;
 
-    if(p_callback != NULL)
+    if(ref_io_dev_callback != NULL)
     {
-        p_callback -> p_input_device = NULL;
-        p_callback -> ref_device = nil;
-        CFDictionaryRemoveAllValues(p_callback -> dict_event_guard);
-        
-        CFRelease(p_callback -> dict_event_guard);
-
-        CFDictionaryRemoveValue(dict_callback, ref_device);
-        
-        free(p_callback);
-        
-        IOHIDDeviceUnscheduleFromRunLoop(ref_device, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-        
-        IOHIDDeviceClose(ref_device, kIOHIDOptionsTypeNone);
+        io_result = [ref_io_dev_callback close];
+        CFDictionaryRemoveValue(dict_callback, ref_io_device);
     }
-    
+
     return true;
 }
 

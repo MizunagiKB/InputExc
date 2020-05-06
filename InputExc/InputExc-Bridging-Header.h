@@ -5,4 +5,4 @@
 #import <IOKit/hid/IOHIDLib.h>
 #import <Cocoa/Cocoa.h>
 
-#import "input_device.h"
+#import "io_dev_attacher.h"

@@ -17,7 +17,7 @@
 		61939C0A2453CB750096A5D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61939C092453CB750096A5D7 /* Preview Assets.xcassets */; };
 		61939C0D2453CB750096A5D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61939C0B2453CB750096A5D7 /* Main.storyboard */; };
 		61939C192453CB750096A5D7 /* InputExcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61939C182453CB750096A5D7 /* InputExcTests.swift */; };
-		61939C352453CF5F0096A5D7 /* input_device.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C342453CF5F0096A5D7 /* input_device.m */; };
+		61939C352453CF5F0096A5D7 /* io_dev_attacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61939C342453CF5F0096A5D7 /* io_dev_attacher.m */; };
 		61939C3B2453E13A0096A5D7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */; };
 		61939C3D2453E1400096A5D7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61939C3C2453E1400096A5D7 /* IOKit.framework */; };
 		6196D669245E3AD1005D3817 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196D668245E3AD1005D3817 /* AppEnvironment.swift */; };
@@ -25,6 +25,7 @@
 		6196D66D245EBA61005D3817 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196D66C245EBA61005D3817 /* SwiftyJSON.swift */; };
 		6196D66F245F6E44005D3817 /* template-Joy-Con (R).json in Resources */ = {isa = PBXBuildFile; fileRef = 6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */; };
 		6196D670245F76C9005D3817 /* template-Joy-Con (L).json in Resources */ = {isa = PBXBuildFile; fileRef = 6127752B245C5E33001C5F90 /* template-Joy-Con (L).json */; };
+		61E2F94824625044008C7E54 /* io_dev_callback.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E2F94724625044008C7E54 /* io_dev_callback.m */; };
 		61E3955A2458D9E00057AE4B /* template-TABMATE.json in Resources */ = {isa = PBXBuildFile; fileRef = 61E395592458D9E00057AE4B /* template-TABMATE.json */; };
 		61FB979324578B1700AF4A27 /* json_schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB979224578B1700AF4A27 /* json_schema.swift */; };
 /* End PBXBuildFile section */
@@ -66,14 +67,16 @@
 		61939C232453CB750096A5D7 /* InputExcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputExcUITests.swift; sourceTree = "<group>"; };
 		61939C252453CB750096A5D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61939C332453CF5F0096A5D7 /* InputExc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InputExc-Bridging-Header.h"; sourceTree = "<group>"; };
-		61939C342453CF5F0096A5D7 /* input_device.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = input_device.m; sourceTree = "<group>"; };
-		61939C362453CF740096A5D7 /* input_device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = input_device.h; sourceTree = "<group>"; };
+		61939C342453CF5F0096A5D7 /* io_dev_attacher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = io_dev_attacher.m; sourceTree = "<group>"; };
+		61939C362453CF740096A5D7 /* io_dev_attacher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io_dev_attacher.h; sourceTree = "<group>"; };
 		61939C3A2453E13A0096A5D7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		61939C3C2453E1400096A5D7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		6196D668245E3AD1005D3817 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		6196D66A245E3D36005D3817 /* AppBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBridge.swift; sourceTree = "<group>"; };
 		6196D66C245EBA61005D3817 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-Joy-Con (R).json"; sourceTree = "<group>"; };
+		61E2F94724625044008C7E54 /* io_dev_callback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = io_dev_callback.m; sourceTree = "<group>"; };
+		61E2F9492462505A008C7E54 /* io_dev_callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io_dev_callback.h; sourceTree = "<group>"; };
 		61E395592458D9E00057AE4B /* template-TABMATE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-TABMATE.json"; sourceTree = "<group>"; };
 		61FB979224578B1700AF4A27 /* json_schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json_schema.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +134,7 @@
 			children = (
 				61939C332453CF5F0096A5D7 /* InputExc-Bridging-Header.h */,
 				61E395582458D9A10057AE4B /* Resources */,
-				61E3955B2458E5260057AE4B /* Input */,
+				61E3955B2458E5260057AE4B /* io_device */,
 				61939C022453CB710096A5D7 /* AppDelegate.swift */,
 				6196D66A245E3D36005D3817 /* AppBridge.swift */,
 				6196D668245E3AD1005D3817 /* AppEnvironment.swift */,
@@ -195,13 +198,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		61E3955B2458E5260057AE4B /* Input */ = {
+		61E3955B2458E5260057AE4B /* io_device */ = {
 			isa = PBXGroup;
 			children = (
-				61939C362453CF740096A5D7 /* input_device.h */,
-				61939C342453CF5F0096A5D7 /* input_device.m */,
+				61939C362453CF740096A5D7 /* io_dev_attacher.h */,
+				61939C342453CF5F0096A5D7 /* io_dev_attacher.m */,
+				61E2F9492462505A008C7E54 /* io_dev_callback.h */,
+				61E2F94724625044008C7E54 /* io_dev_callback.m */,
 			);
-			path = Input;
+			path = io_device;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,7 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61939C352453CF5F0096A5D7 /* input_device.m in Sources */,
+				61939C352453CF5F0096A5D7 /* io_dev_attacher.m in Sources */,
 				6196D66B245E3D36005D3817 /* AppBridge.swift in Sources */,
 				6196D66D245EBA61005D3817 /* SwiftyJSON.swift in Sources */,
 				6196D669245E3AD1005D3817 /* AppEnvironment.swift in Sources */,
@@ -348,6 +353,7 @@
 				6127752D245CD0D6001C5F90 /* JoyConView.swift in Sources */,
 				61939C032453CB710096A5D7 /* AppDelegate.swift in Sources */,
 				6127752F245CD9D8001C5F90 /* TABMATEView.swift in Sources */,
+				61E2F94824625044008C7E54 /* io_dev_callback.m in Sources */,
 				61FB979324578B1700AF4A27 /* json_schema.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
