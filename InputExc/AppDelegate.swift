@@ -69,3 +69,5 @@ class AppDelegate: NSObject, NSApplicationDelegate
     }
 }
 
+
+// [EOF]
