@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import InputMethodKit
 
 
 @objc class AppBridge: NSObject
@@ -54,17 +55,35 @@ import CoreGraphics
         let key_code = dev.character(toKeycode: action.character)
 
         let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
-        let loc = CGEventTapLocation(rawValue: CGEventTapLocation.cghidEventTap.rawValue)
-
-        
         let event = CGEvent(keyboardEventSource: src, virtualKey: key_code, keyDown: keydown)
 
         if action.shift { event?.flags.insert(.maskShift) }
         if action.control { event?.flags.insert(.maskControl) }
         if action.alternate { event?.flags.insert(.maskAlternate) }
         if action.command { event?.flags.insert(.maskCommand) }
+
+        event?.post(tap: CGEventTapLocation.cghidEventTap)
+
+        if action.shift
+        {
+            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Shift), keyDown: keydown)
+            ev?.post(tap: CGEventTapLocation.cghidEventTap)
+        }
+
+        if action.control {
+            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Control), keyDown: keydown)
+            ev?.post(tap: CGEventTapLocation.cghidEventTap)
+        }
         
-        event?.post(tap: loc!)
+        if action.alternate {
+            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Option), keyDown: keydown)
+            ev?.post(tap: CGEventTapLocation.cghidEventTap)
+        }
+
+        if action.command {
+            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Command), keyDown: keydown)
+            ev?.post(tap: CGEventTapLocation.cghidEventTap)
+        }
     }
 
     @objc func evt_device_input(device: IOHIDDevice, usage: Int32, value: Int32)
