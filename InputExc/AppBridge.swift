@@ -49,20 +49,10 @@ import InputMethodKit
         
         return true
     }
-
-    func send_keycode(action: IConfAction, keydown: Bool)
+    
+    func send_meta_keycode(action: IConfAction, keydown: Bool)
     {
-        let key_code = dev.character(toKeycode: action.character)
-
         let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
-        let event = CGEvent(keyboardEventSource: src, virtualKey: key_code, keyDown: keydown)
-
-        if action.shift { event?.flags.insert(.maskShift) }
-        if action.control { event?.flags.insert(.maskControl) }
-        if action.alternate { event?.flags.insert(.maskAlternate) }
-        if action.command { event?.flags.insert(.maskCommand) }
-
-        event?.post(tap: CGEventTapLocation.cghidEventTap)
 
         if action.shift
         {
@@ -83,6 +73,31 @@ import InputMethodKit
         if action.command {
             let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Command), keyDown: keydown)
             ev?.post(tap: CGEventTapLocation.cghidEventTap)
+        }
+    }
+    
+    func send_keycode(action: IConfAction, keydown: Bool)
+    {
+        let key_code = dev.character(toKeycode: action.character)
+
+        let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
+        let event = CGEvent(keyboardEventSource: src, virtualKey: key_code, keyDown: keydown)
+
+        if action.shift { event?.flags.insert(.maskShift) }
+        if action.control { event?.flags.insert(.maskControl) }
+        if action.alternate { event?.flags.insert(.maskAlternate) }
+        if action.command { event?.flags.insert(.maskCommand) }
+
+        if keydown == true
+        {
+            self.send_meta_keycode(action: action, keydown: keydown)
+        }
+
+        event?.post(tap: CGEventTapLocation.cghidEventTap)
+
+        if keydown == false
+        {
+            self.send_meta_keycode(action: action, keydown: keydown)
         }
     }
 

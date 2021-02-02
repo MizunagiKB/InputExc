@@ -58,6 +58,8 @@ struct ContentView: View
                 JoyConView(conf: self.env.get_conf_device())
             } else if self.env.selected_product == "Joy-Con (R)" {
                 JoyConView(conf: self.env.get_conf_device())
+            } else if self.env.selected_product == "DUALSHOCK 4 Wireless Controller" {
+                DualSenseView(conf: self.env.get_conf_device())
             } else {
             }
 

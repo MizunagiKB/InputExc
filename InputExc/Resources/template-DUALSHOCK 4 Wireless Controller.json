@@ -1,0 +1,39 @@
+{
+    "product": "DUALSHOCK 4 Wireless Controller",
+    "vendor_id": 0,
+    "product_id": 0,
+    "serial_id": "",
+
+    "pages": [
+        {
+            "name": "DUALSHOCK 4 Wireless Controller",
+            "actions": [
+                {"usage":  1, "name": "Square",         "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  2, "name": "Cross",          "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  3, "name": "Circle",         "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  4, "name": "Triangle",       "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage":  5, "name": "L1",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  6, "name": "R1",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage":  7, "name": "L2",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  8, "name": "R2",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage":  9, "name": "Create",         "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage": 10, "name": "Option",         "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 11, "name": "Analog L Click", "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage": 12, "name": "Analog R Click", "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 13, "name": "PS",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage": 14, "name": "TouchPad",       "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 57, "name": "U",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 0 },
+                {"usage": 57, "name": "D",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 4 },
+                {"usage": 57, "name": "R",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 2 },
+                {"usage": 57, "name": "L",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 6 }
+            ]
+        }
+    ]
+}
+

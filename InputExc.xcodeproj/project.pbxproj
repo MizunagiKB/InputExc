@@ -25,6 +25,8 @@
 		6196D66D245EBA61005D3817 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196D66C245EBA61005D3817 /* SwiftyJSON.swift */; };
 		6196D66F245F6E44005D3817 /* template-Joy-Con (R).json in Resources */ = {isa = PBXBuildFile; fileRef = 6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */; };
 		6196D670245F76C9005D3817 /* template-Joy-Con (L).json in Resources */ = {isa = PBXBuildFile; fileRef = 6127752B245C5E33001C5F90 /* template-Joy-Con (L).json */; };
+		61BACF4725C9826700CD1B08 /* template-DUALSHOCK 4 Wireless Controller.json in Resources */ = {isa = PBXBuildFile; fileRef = 61BACF4625C9826700CD1B08 /* template-DUALSHOCK 4 Wireless Controller.json */; };
+		61BACF4F25C988E300CD1B08 /* DualSenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BACF4E25C988E300CD1B08 /* DualSenseView.swift */; };
 		61E2F94824625044008C7E54 /* io_dev_callback.m in Sources */ = {isa = PBXBuildFile; fileRef = 61E2F94724625044008C7E54 /* io_dev_callback.m */; };
 		61E3955A2458D9E00057AE4B /* template-TABMATE.json in Resources */ = {isa = PBXBuildFile; fileRef = 61E395592458D9E00057AE4B /* template-TABMATE.json */; };
 		61FB979324578B1700AF4A27 /* json_schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FB979224578B1700AF4A27 /* json_schema.swift */; };
@@ -75,6 +77,8 @@
 		6196D66A245E3D36005D3817 /* AppBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBridge.swift; sourceTree = "<group>"; };
 		6196D66C245EBA61005D3817 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-Joy-Con (R).json"; sourceTree = "<group>"; };
+		61BACF4625C9826700CD1B08 /* template-DUALSHOCK 4 Wireless Controller.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-DUALSHOCK 4 Wireless Controller.json"; sourceTree = "<group>"; };
+		61BACF4E25C988E300CD1B08 /* DualSenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualSenseView.swift; sourceTree = "<group>"; };
 		61E2F94724625044008C7E54 /* io_dev_callback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = io_dev_callback.m; sourceTree = "<group>"; };
 		61E2F9492462505A008C7E54 /* io_dev_callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io_dev_callback.h; sourceTree = "<group>"; };
 		61E395592458D9E00057AE4B /* template-TABMATE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "template-TABMATE.json"; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				61939C042453CB710096A5D7 /* ContentView.swift */,
 				6127752E245CD9D8001C5F90 /* TABMATEView.swift */,
 				6127752C245CD0D6001C5F90 /* JoyConView.swift */,
+				61BACF4E25C988E300CD1B08 /* DualSenseView.swift */,
 				61939C062453CB750096A5D7 /* Assets.xcassets */,
 				61939C0B2453CB750096A5D7 /* Main.storyboard */,
 				61939C0E2453CB750096A5D7 /* Info.plist */,
@@ -194,6 +199,7 @@
 				61E395592458D9E00057AE4B /* template-TABMATE.json */,
 				6127752B245C5E33001C5F90 /* template-Joy-Con (L).json */,
 				6196D66E245F6E44005D3817 /* template-Joy-Con (R).json */,
+				61BACF4625C9826700CD1B08 /* template-DUALSHOCK 4 Wireless Controller.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 				61E3955A2458D9E00057AE4B /* template-TABMATE.json in Resources */,
 				6196D670245F76C9005D3817 /* template-Joy-Con (L).json in Resources */,
 				6196D66F245F6E44005D3817 /* template-Joy-Con (R).json in Resources */,
+				61BACF4725C9826700CD1B08 /* template-DUALSHOCK 4 Wireless Controller.json in Resources */,
 				61939C0D2453CB750096A5D7 /* Main.storyboard in Resources */,
 				61939C0A2453CB750096A5D7 /* Preview Assets.xcassets in Resources */,
 				61939C072453CB750096A5D7 /* Assets.xcassets in Resources */,
@@ -347,6 +354,7 @@
 			files = (
 				61939C352453CF5F0096A5D7 /* io_dev_attacher.m in Sources */,
 				6196D66B245E3D36005D3817 /* AppBridge.swift in Sources */,
+				61BACF4F25C988E300CD1B08 /* DualSenseView.swift in Sources */,
 				6196D66D245EBA61005D3817 /* SwiftyJSON.swift in Sources */,
 				6196D669245E3AD1005D3817 /* AppEnvironment.swift in Sources */,
 				61939C052453CB710096A5D7 /* ContentView.swift in Sources */,
