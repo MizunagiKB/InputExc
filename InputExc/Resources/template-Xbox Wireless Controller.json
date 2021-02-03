@@ -1,0 +1,37 @@
+{
+    "product": "Xbox Wireless Controller",
+    "vendor_id": 0,
+    "product_id": 0,
+    "serial_id": "",
+
+    "pages": [
+        {
+            "name": "Xbox Wireless Controller",
+            "actions": [
+                {"usage":  1, "name": "A",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  2, "name": "B",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  4, "name": "X",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  5, "name": "Y",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage":  7, "name": "LB",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage":  8, "name": "RB",             "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 11, "name": "View",           "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage": 12, "name": "Menu",           "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 13, "name": "Xbox",           "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 14, "name": "Analog L Click", "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+                {"usage": 15, "name": "Analog R Click", "shift": false, "control": false, "alternate": false, "command": false,  "character": "" },
+
+                {"usage": 57, "name": "U",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 1 },
+                {"usage": 57, "name": "D",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 5 },
+                {"usage": 57, "name": "R",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 3 },
+                {"usage": 57, "name": "L",              "shift": false, "control": false, "alternate": false, "command": false,  "character": "", "value": 7 },
+
+                {"usage": 178, "name": "Share",         "shift": false, "control": false, "alternate": false, "command": false,  "character": "" }
+
+            ]
+        }
+    ]
+}

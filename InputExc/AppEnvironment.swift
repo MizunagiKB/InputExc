@@ -17,7 +17,9 @@ class AppConfig
     let dict_tempalte: [String: String] = [
         "TABMATE": "template-TABMATE",
         "Joy-Con (L)": "template-Joy-Con (L)",
-        "Joy-Con (R)": "template-Joy-Con (R)"
+        "Joy-Con (R)": "template-Joy-Con (R)",
+        "DUALSHOCK 4 Wireless Controller": "template-DUALSHOCK 4 Wireless Controller",
+        "Xbox Wireless Controller": "template-Xbox Wireless Controller"
     ]
 
     var conf: IConfDevices = IConfDevices()
