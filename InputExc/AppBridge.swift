@@ -50,29 +50,59 @@ import InputMethodKit
         return true
     }
     
-    func send_meta_keycode(action: IConfAction, keydown: Bool)
+    func send_all_meta_keycode(keydown: Bool, dulation: Float64)
     {
-        let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
-
-        if action.shift
+        DispatchQueue.main.asyncAfter(deadline: .now() + dulation)
         {
-            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Shift), keyDown: keydown)
-            ev?.post(tap: CGEventTapLocation.cghidEventTap)
-        }
+            let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
 
-        if action.control {
-            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Control), keyDown: keydown)
-            ev?.post(tap: CGEventTapLocation.cghidEventTap)
-        }
-        
-        if action.alternate {
-            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Option), keyDown: keydown)
-            ev?.post(tap: CGEventTapLocation.cghidEventTap)
-        }
+            if true {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Shift), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
 
-        if action.command {
-            let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Command), keyDown: keydown)
-            ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            if true {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Control), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
+            
+            if true {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Option), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
+
+            if true {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Command), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
+        }
+    }
+
+    func send_meta_keycode(action: IConfAction, keydown: Bool, dulation: Float64)
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + dulation)
+        {
+            let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
+
+            if action.shift {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Shift), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
+
+            if action.control {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Control), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
+            
+            if action.alternate {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Option), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
+
+            if action.command {
+                let ev = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(kVK_Command), keyDown: keydown)
+                ev?.post(tap: CGEventTapLocation.cghidEventTap)
+            }
         }
     }
     
@@ -88,17 +118,13 @@ import InputMethodKit
         if action.alternate { event?.flags.insert(.maskAlternate) }
         if action.command { event?.flags.insert(.maskCommand) }
 
-        if keydown == true
-        {
-            self.send_meta_keycode(action: action, keydown: keydown)
-        }
 
-        event?.post(tap: CGEventTapLocation.cghidEventTap)
-
-        if keydown == false
+        self.send_meta_keycode(action: action, keydown: keydown, dulation: 0.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01)
         {
-            self.send_meta_keycode(action: action, keydown: keydown)
+            event?.post(tap: CGEventTapLocation.cghidEventTap)
         }
+        self.send_all_meta_keycode(keydown: false, dulation: 0.02)
     }
 
     @objc func evt_device_input(device: IOHIDDevice, usage: Int32, value: Int32)
