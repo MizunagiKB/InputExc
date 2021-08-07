@@ -729,8 +729,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="243" height="64"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SgW-x0-VXC" userLabel="lbl_version">
-                                                <rect key="frame" x="-2" y="48" width="81" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Version 1.2.0" id="Rdi-vO-3OJ">
+                                                <rect key="frame" x="-2" y="48" width="79" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Version 1.2.1" id="Rdi-vO-3OJ">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
