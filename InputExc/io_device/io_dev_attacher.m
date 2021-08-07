@@ -15,7 +15,7 @@
 #import "InputExc-Swift.h"
 
 
-const UInt8* get_keyboard_layout()
+const UInt8* get_keyboard_layout(void)
 {
     TISInputSourceRef source_curr;
     CFDataRef layout;
@@ -44,7 +44,7 @@ const UInt8* get_keyboard_layout()
 }
 
 
-CFMutableDictionaryRef create_kb_table()
+CFMutableDictionaryRef create_kb_table(void)
 {
     CFMutableDictionaryRef dict_result;
     UInt32 i;

@@ -21,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 
         bridge = AppBridge()
         bridge.env = AppEnvironment()
+        bridge.env.refresh_process_list()
         bridge.env.config = AppConfig()
 
         bridge.dev = IODevAttacher()

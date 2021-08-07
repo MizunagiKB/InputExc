@@ -114,14 +114,42 @@ class AppEnvironment: ObservableObject
         var product_id: Int32 = 0
         var serial_id: String = ""
     }
+
+    struct Process: Hashable
+    {
+        var localizedName: String = ""
+        var processIdentifier: pid_t = -1
+    }
     
     @Published var selected_product: String = ""
     @Published var selected_serial_id: String = ""
     @Published var device_input_status: String = ""
+    @Published var selected_localizedName: String = ""
+    @Published var selected_processIdentifier: pid_t = -1
     @Published var list_device: Array<Device> = []
+    @Published var list_process: Array<Process> = []
 
     var config: AppConfig!
 
+    func refresh_process_list()
+    {
+        self.list_process = [];
+
+        let runningApplications = NSWorkspace.shared.runningApplications
+
+        for eachApplication in runningApplications {
+            if let name = eachApplication.localizedName {
+                let process: Process = Process(
+                    localizedName: name,
+                    processIdentifier: eachApplication.processIdentifier
+                )
+                self.list_process.append(process)
+            }
+        }
+        
+        self.list_process.sort {$0.localizedName < $1.localizedName}
+    }
+    
     func get_conf_device() -> IConfDevice
     {
         for device in self.config.conf.devices {

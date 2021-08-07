@@ -108,25 +108,38 @@ import InputMethodKit
     
     func send_keycode(action: IConfAction, keydown: Bool)
     {
-        let key_code = dev.character(toKeycode: action.character)
+        let pid = self.env.selected_processIdentifier
 
-        let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
-        let event = CGEvent(keyboardEventSource: src, virtualKey: key_code, keyDown: keydown)
+        if pid != -1 {
+            let key_code = dev.character(toKeycode: action.character)
 
-        if action.shift { event?.flags.insert(.maskShift) }
-        if action.control { event?.flags.insert(.maskControl) }
-        if action.alternate { event?.flags.insert(.maskAlternate) }
-        if action.command { event?.flags.insert(.maskCommand) }
+            let src = CGEventSource(stateID: CGEventSourceStateID.hidSystemState)
+            let event = CGEvent(keyboardEventSource: src, virtualKey: key_code, keyDown: keydown)
 
+            if action.shift { event?.flags.insert(.maskShift) }
+            if action.control { event?.flags.insert(.maskControl) }
+            if action.alternate { event?.flags.insert(.maskAlternate) }
+            if action.command { event?.flags.insert(.maskCommand) }
 
-        self.send_meta_keycode(action: action, keydown: keydown, dulation: 0.0)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01)
-        {
-            event?.post(tap: CGEventTapLocation.cghidEventTap)
+            event?.postToPid(pid)
         }
-        self.send_all_meta_keycode(keydown: false, dulation: 0.02)
     }
 
+    func get_pid(name: String) -> pid_t
+    {
+        let runningApplications = NSWorkspace.shared.runningApplications
+
+        for eachApplication in runningApplications {
+            if let applicationName = eachApplication.localizedName {
+                if applicationName == name {
+                    return eachApplication.processIdentifier
+                }
+            }
+        }
+        
+        return -1
+    }
+    
     @objc func evt_device_input(device: IOHIDDevice, usage: Int32, value: Int32)
     {
         let product = IOHIDDeviceGetProperty(device, kIOHIDProductKey as CFString) as! String
@@ -135,7 +148,7 @@ import InputMethodKit
         self.env.device_input_status = product + String(format: " usage:%d value:%d", usage, value)
 
         NSLog(self.env.device_input_status)
-
+        
 
         for conf_device in self.env.config.conf.devices
         {
@@ -151,15 +164,18 @@ import InputMethodKit
                             {
                                 if action.value == nil
                                 {
+                                    // print("action.value == nil", device, usage, value)
                                     self.send_keycode(action: action, keydown: value > 0 ? true : false)
                                 } else if action.value == value {
-                                    self.send_keycode(action: action, keydown: true)
-                                    self.send_keycode(action: action, keydown: false)
+                                    // self.send_keycode(action: action, keydown: true)
+                                    // self.send_keycode(action: action, keydown: false)
                                 }
+                                break
                             }
                         }
                     }
                 }
+                break
             }
         }
     }
