@@ -34,17 +34,20 @@ struct ContentView: View
     var body: some View {
         VStack {
 
-            MenuButton(label: Text(self.env.selected_localizedName))
-            {
-                ForEach(self.env.list_process, id: \.self)
+            HStack {
+                MenuButton(label: Text(self.env.selected_localizedName))
                 {
-                    process in Button(action: {
-                        self.env.selected_localizedName = process.localizedName
-                        self.env.selected_processIdentifier = process.processIdentifier
-                    }) {
-                        Text(process.localizedName)
+                    ForEach(self.env.list_process, id: \.self)
+                    {
+                        process in Button(action: {
+                            self.env.selected_localizedName = process.localizedName
+                            self.env.selected_processIdentifier = process.processIdentifier
+                        }) {
+                            Text(process.localizedName)
+                        }
                     }
                 }
+                Button(action: { self.env.refresh_process_list() }) { Text("Reload") }
             }
 
             MenuButton(label: Text(self.env.selected_product))
@@ -85,7 +88,7 @@ struct ContentView: View
             }.disabled(self.env.selected_product.count == 0)
         }
         .padding()
-        .frame(width: 540.0, height: 720.0)
+        .frame(width: 480.0, height: 720.0)
     }
 }
 

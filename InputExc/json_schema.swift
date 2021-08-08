@@ -16,6 +16,7 @@ class IConfAction
     var control: Bool = false
     var alternate: Bool = false
     var command: Bool = false
+    var post: Bool = false
     var character: String = ""
 
     init() {}
@@ -32,6 +33,7 @@ class IConfAction
         self.control = j["control"].boolValue
         self.alternate = j["alternate"].boolValue
         self.command = j["command"].boolValue
+        self.post = j["post"].boolValue
         self.character = j["character"].stringValue
     }
 
@@ -48,6 +50,7 @@ class IConfAction
         j["control"].bool = self.control
         j["alternate"].bool = self.alternate
         j["command"].bool = self.command
+        j["post"].bool = self.post
         j["character"].string = self.character
 
         return j

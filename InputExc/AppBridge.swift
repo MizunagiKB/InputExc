@@ -121,7 +121,7 @@ import InputMethodKit
             if action.alternate { event?.flags.insert(.maskAlternate) }
             if action.command { event?.flags.insert(.maskCommand) }
 
-            if key_code == kVK_Space {
+            if action.post == true {
                 event?.post(tap: CGEventTapLocation.cghidEventTap)
             } else {
                 event?.postToPid(pid)
