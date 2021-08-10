@@ -9,6 +9,10 @@ An application that converts (Bluetooth)gamepad input to keyboard
 
 ## Usage
 
+### 簡単な使い方をGitHub wikiに記載しています。
+
+* https://github.com/MizunagiKB/InputExc/wiki/usage.ja
+
 TABMATEのボタンそれぞれに、簡単なキーボード入力の組み合わせが出来ます。
 
 モード切り替えにも対応しています。
