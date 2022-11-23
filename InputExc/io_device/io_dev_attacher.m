@@ -240,10 +240,10 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
 }
 
 
-- (CGKeyCode) CharacterToKeycode:(NSString*)s
+- (UInt16) CharacterToKeycode:(NSString*)s
 {
-    CFNumberRef ref_n;
     CGKeyCode code;
+    CFNumberRef ref_n;
     UniChar uchar = s.UTF8String[0];
     CFStringRef s_one = NULL;
 
@@ -291,7 +291,6 @@ void evt_device_detach(void* ctx, IOReturn result, void* sender, IOHIDDeviceRef 
     }
 
     CFRelease(s_one);
-
 
     return code;
 }

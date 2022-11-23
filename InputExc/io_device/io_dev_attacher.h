@@ -25,7 +25,7 @@ IODevAttacher: NSObject {
 - (BOOL) device_open:(IOHIDDeviceRef)ref_io_device;
 - (BOOL) device_close:(IOHIDDeviceRef)ref_io_device;
 
-- (CGKeyCode) CharacterToKeycode:(NSString*)character;
+- (UInt16) CharacterToKeycode:(NSString*)s;
 @end
 
 
